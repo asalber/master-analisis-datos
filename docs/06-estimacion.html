@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Problemas de Análisis Matemático - 1&nbsp; Estimación de parámetros</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./index.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="Problemas de Análisis Matemático - 1&nbsp; Estimación de parámetros">
+<meta property="og:site-name" content="Problemas de Análisis Matemático">
+<meta name="twitter:title" content="Problemas de Análisis Matemático - 1&nbsp; Estimación de parámetros">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-estimacion.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Problemas de Análisis Matemático</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./ejercicios-analisis.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./ejercicios-analisis.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-estimacion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div id="exr-distribucion-media-trabajadores-pymes" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.1 </strong></span>El número medio de trabajadores en las PYMES españolas es 5 y su varianza 4. Realizado un muestreo aleatorio de 16 PYMES.</p>
+<p>Calcular:</p>
+<ol type="a">
+<li><p>La esperanza y varianza de la media muestral.</p></li>
+<li><p>La esperanza de la varianza y de la cuasivarianza muestral.</p></li>
+<li><p>Mínimo tamaño que ha de tener la muestra para que exista una probabilidad mayor o igual al <span class="math inline">\(95\)</span>% de que la media muestral se desvíe de la media poblacional a lo sumo <span class="math inline">\(0.25\)</span> unidades.</p></li>
+<li><p>Si realizamos un muestreo aleatorio de tamaño <span class="math inline">\(320\)</span> obtener <span class="math inline">\(P(4.9\leq \bar x \leq 5.2.\)</span>.</p></li>
+</ol>
+</div>
+<div id="exr-distribucion-cuasivarianza-iberpapel" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.2 </strong></span>El precio de las acciones de Iberpapel se distribuyen según un modelo normal <span class="math inline">\(N(\mu, 2.\)</span>, analizar <span class="math inline">\(16\)</span> sesiones de la Bolsa de Madrid elegidas aleatoriamente, para calcular la probabilidad de que la cuasivarianza muestral del precio de las acciones sea mayor o igual que <span class="math inline">\(2.136\)</span>.</p>
+</div>
+<div id="exr-diferencia-proporciones-votos" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.3 </strong></span>El porcentaje de votantes con preferencia de un determinado partido es del <span class="math inline">\(5\)</span>% en una región <span class="math inline">\(A\)</span>, y el <span class="math inline">\(10\)</span>% en otra <span class="math inline">\(B\)</span>. Consultados <span class="math inline">\(100\)</span> electores de la región <span class="math inline">\(A\)</span> y <span class="math inline">\(150\)</span> de la <span class="math inline">\(B\)</span>, determinar la probabilidad de que el porcentaje de electores consultados favorables a dicho partido en la segunda región supere en más de <span class="math inline">\(0.02\)</span> al porcentaje de electores favorables a dicho partido en la primera.</p>
+</div>
+<div class="{exr-intervalo-confianza-media-demanda}">
+<p>Una empresa desea estudiar la demanda futura de uno de sus productos, para lo cual selecciona, mediante muestreo aleatorio simple, a diez de sus clientes, observando el número de unidades demandadas por ellos:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Número de unidades demandadas</th>
+<th style="text-align: right;">Número de clientes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1002</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1004</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1006</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1008</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1010</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1012</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Suponiendo que la demanda sigue una distribución normal.</p>
+<ol type="a">
+<li>Estimar la demanda media mediante un intervalo de confianza con nivel de significación <span class="math inline">\(0.1\)</span>.</li>
+<li>¿Qué tamaño muestral sería necesario para que el intervalo tuviese un error máximo de <span class="math inline">\(\pm 2\)</span> unidades?</li>
+</ol>
+</div>
+<div id="exr-intervalo-confianza-media-bitcoin" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.4 </strong></span>Al objeto de determinar la proporción de españoles que poseen la criptomoneda bitcoin se ha realizado un muestreo aleatorio de <span class="math inline">\(100\)</span> españoles, resultando que <span class="math inline">\(15\)</span> tienen bitcoins.</p>
+<ol type="a">
+<li><p>Obtener un intervalo de confianza del <span class="math inline">\(95\)</span>% para la proporción poblacional de españoles que poseen bitcoins.</p></li>
+<li><p>¿A cuántos españoles se debería encuestar para lograr una semiamplitud del intervalo de <span class="math inline">\(0.02\)</span>, utilizando un nivel de confianza del <span class="math inline">\(80\)</span>%?</p></li>
+</ol>
+</div>
+<div id="exr-intervalo-confianza-proporcion-demanda" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.5 </strong></span>Una empresa quiere conocer la proporción de clientes dispuestos a demandar un nuevo producto, para averiguarlo efectúa un muestreo aleatorio de tamaño <span class="math inline">\(100\)</span> en el que se obtiene que un <span class="math inline">\(20\)</span>% de ellos estarían dispuestos a comprar el nuevo producto. Determinar el intervalo de confianza para la proporción poblacional con un grado de confianza del <span class="math inline">\(90\)</span>%.</p>
+</div>
+<div id="exr-intervalo-confianza-media-varianza-gasto-alimentacion" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.6 </strong></span>En una comunidad autónoma, los gastos semanales en alimentación por unidad familiar se distribuyen según un modelo normal <span class="math inline">\(N(\mu,\sigma.\)</span>. Realizado un muestreo aleatorio en el que se han consultado a <span class="math inline">\(21\)</span> unidades familiares hemos obtenido que el gasto medio semanal muestral es de <span class="math inline">\(150\)</span> euros y la cuasidesviación típica semanal muestral es de <span class="math inline">\(12\)</span> euros.</p>
+<ol type="a">
+<li><p>Construir un intervalo de confianza del <span class="math inline">\(95\)</span>% para el gasto medio semanal poblacional.</p></li>
+<li><p>Construir un intervalo de confianza del <span class="math inline">\(95\)</span>% para la varianza poblacional.</p></li>
+</ol>
+</div>
+<div id="exr-intervalo-confianza-media-varianza-gasto-porcino" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.7 </strong></span>Los gastos mensuales en carne de porcino en las familias españolas se distribuyen según un modelo normal <span class="math inline">\(N(\mu, \sigma.\)</span>. Realizando un muestreo aleatorio en el que se pregunta a <span class="math inline">\(20\)</span> unidades familiares, se obtiene que el gasto medio mensual ha sido de <span class="math inline">\(170.31\)</span> € y la cuasidesviación típica de <span class="math inline">\(36\)</span> €.</p>
+<ol type="a">
+<li><p>Obtener el intervalo de confianza para el gasto medio mensual en carne de porcino con un <span class="math inline">\(95\)</span>% de confianza.</p></li>
+<li><p>Razone cómo podría obtener un intervalo de confianza más preciso para el gasto medio, suponiendo que no varían la media muestral, la cuasivarianza muestral y el tamaño de la muestra.</p></li>
+<li><p>Obtener el intervalo de confianza para la varianza del gasto mensual en carne de porcino con un <span class="math inline">\(95\)</span>% de confianza.</p></li>
+</ol>
+</div>
+<div id="exr-intervalo-confianza-media-peso" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.8 </strong></span>La OMS ha obtenido una muestra de los pesos de <span class="math inline">\(50\)</span> niños de entre <span class="math inline">\(11\)</span> y <span class="math inline">\(14\)</span> años, que proporciona una media muestral de <span class="math inline">\(47\)</span> kg y una desviación típica muestral de <span class="math inline">\(11\)</span> kg. Suponiendo que la población sigue una distribución normal.</p>
+<ol type="a">
+<li><p>Obtener un intervalo de confianza para la media poblacional con un <span class="math inline">\(95\)</span>% de nivel de confianza.</p></li>
+<li><p>El director de la OMS considera que el intervalo es insatisfactorio, pero quiere mantener el nivel de confianza. Por ello decide reducir a la mitad la precisión de dicho intervalo (reducir un <span class="math inline">\(50\)</span>% el radio del intervalo.. En estas condiciones, ¿cuál debería ser el tamaño de la muestra para cumplir los objetivos del director?</p></li>
+<li><p>Los resultados obtenidos en los análisis anteriores siguen sin convencer al director de la OMS y le pide a su equipo que establezca un intervalo de confianza para la media poblacional con un <span class="math inline">\(99\)</span>% de nivel de confianza, manteniendo la misma muestra del ejercicio anterior.</p></li>
+<li><p>El director decide reducir en un tercio la precisión del intervalo anterior, pero quiere mantener el nivel de confianza ¿cuál debería ser el tamaño de la muestra para cumplir dicho objetivo?</p></li>
+</ol>
+</div>
+<div id="exr-intervalo-confianza-proporcion-uso-alta-velocidad" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.9 </strong></span>Tras la liberalización del transporte ferroviario de pasajeros en las líneas de alta velocidad en España, la compañía francesa SNCF estudia la proporción de clientes que utiliza al menos una vez al mes el servicio de alta velocidad. A tal efecto la empresa realiza un muestreo aleatorio en el que se seleccionan <span class="math inline">\(50\)</span> usuarios y en el que resulta que <span class="math inline">\(35\)</span> de ellos afirma utilizar este servicio una vez al mes como mínimo.</p>
+<p>Considerando un nivel de confianza del <span class="math inline">\(98\)</span>% determine un intervalo de confianza poblacional para la proporción de usuarios que utilizan la alta velocidad una vez al mes por lo menos (justifique cómo obtiene el intervalo de confianza antes de proceder a su cálculo..</p>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

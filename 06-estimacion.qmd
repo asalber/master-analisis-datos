@@ -1,0 +1,93 @@
+---
+title: Estimación de parámetros
+lang: es
+---
+
+:::{#exr-distribucion-media-trabajadores-pymes}
+El número medio de trabajadores en las PYMES españolas es 5 y su varianza 4. Realizado un muestreo aleatorio de 16 PYMES.
+
+Calcular:
+
+a. La esperanza y varianza de la media muestral.
+
+b. La esperanza de la varianza y de la cuasivarianza muestral.
+
+c. Mínimo tamaño que ha de tener la muestra para que exista una probabilidad mayor o igual al $95$% de que la media muestral se desvíe de la media poblacional a lo sumo $0.25$ unidades.
+
+d. Si realizamos un muestreo aleatorio de tamaño $320$ obtener $P(4.9\leq \bar x  \leq 5.2.$.
+:::
+
+:::{#exr-distribucion-cuasivarianza-iberpapel}
+El precio de las acciones de Iberpapel se distribuyen según un modelo normal $N(\mu, 2.$, analizar $16$ sesiones de la Bolsa de Madrid elegidas aleatoriamente, para calcular la probabilidad de que la cuasivarianza muestral del precio de las acciones sea mayor o igual que $2.136$.
+:::
+
+:::{#exr-diferencia-proporciones-votos}
+El porcentaje de votantes con preferencia de un determinado partido es del $5$% en una región $A$, y el $10$% en otra $B$. Consultados $100$ electores de la región $A$ y $150$ de la $B$, determinar la probabilidad de que el porcentaje de electores consultados favorables a dicho partido en la segunda región supere en más de $0.02$ al porcentaje de electores favorables a dicho partido en la primera.
+:::
+
+:::{exr-intervalo-confianza-media-demanda}
+Una empresa desea estudiar la demanda futura de uno de sus productos, para lo cual selecciona, mediante muestreo aleatorio simple, a diez de sus clientes, observando el número de unidades demandadas por ellos:
+
+| Número de unidades demandadas | Número de clientes |
+|-:|-:|
+|1000 | 1|
+|1002 | 2|
+|1004 | 1|
+|1006 | 2|
+|1008 | 1|
+|1010 | 2|
+|1012 | 1|
+
+Suponiendo que la demanda sigue una distribución normal.
+
+a. Estimar la demanda media mediante un intervalo de confianza con nivel de significación $0.1$.
+a. ¿Qué tamaño muestral sería necesario para que el intervalo tuviese un error máximo de $\pm 2$ unidades?
+:::
+
+:::{#exr-intervalo-confianza-media-bitcoin}
+Al objeto de determinar la proporción de españoles que poseen la criptomoneda bitcoin se ha realizado un muestreo aleatorio de $100$ españoles, resultando que $15$ tienen bitcoins.
+
+a. Obtener un intervalo de confianza del $95$% para la proporción poblacional de españoles que poseen bitcoins.
+
+b. ¿A cuántos españoles se debería encuestar para lograr una semiamplitud del intervalo de $0.02$, utilizando un nivel de confianza del $80$%?
+:::
+
+:::{#exr-intervalo-confianza-proporcion-demanda}
+Una empresa quiere conocer la proporción de clientes dispuestos a demandar un nuevo producto, para averiguarlo efectúa un muestreo aleatorio de tamaño $100$ en el que se obtiene que un $20$% de ellos estarían dispuestos a comprar el nuevo producto. Determinar el intervalo de confianza para la proporción poblacional con un grado de confianza del $90$%.
+:::
+
+:::{#exr-intervalo-confianza-media-varianza-gasto-alimentacion}
+En una comunidad autónoma, los gastos semanales en alimentación por unidad familiar se distribuyen según un modelo normal $N(\mu,\sigma.$. Realizado un muestreo aleatorio en el que se han consultado a $21$ unidades familiares hemos obtenido que el gasto medio semanal muestral es de $150$ euros y la cuasidesviación típica semanal muestral es de $12$ euros.
+
+a. Construir un intervalo de confianza del $95$% para el gasto medio semanal poblacional.
+
+b. Construir un intervalo de confianza del $95$% para la varianza poblacional.
+:::
+
+:::{#exr-intervalo-confianza-media-varianza-gasto-porcino}
+Los gastos mensuales en carne de porcino en las familias españolas se distribuyen según un modelo normal $N(\mu, \sigma.$. Realizando un muestreo aleatorio en el que se pregunta a $20$ unidades familiares, se obtiene que el gasto medio mensual ha sido de $170.31$ € y la cuasidesviación típica de $36$ €.
+
+a. Obtener el intervalo de confianza para el gasto medio mensual en carne de porcino con un $95$% de confianza.
+
+b. Razone cómo podría obtener un intervalo de confianza más preciso para el gasto medio, suponiendo que no varían la media muestral, la cuasivarianza muestral y el tamaño de la muestra.
+
+c. Obtener el intervalo de confianza para la varianza del gasto mensual en carne de porcino con un $95$% de confianza.
+:::
+
+:::{#exr-intervalo-confianza-media-peso}
+La OMS ha obtenido una muestra de los pesos de $50$ niños de entre $11$ y $14$ años, que proporciona una media muestral de $47$ kg y una desviación típica muestral de $11$ kg. Suponiendo que la población sigue una distribución normal.
+
+a. Obtener un intervalo de confianza para la media poblacional con un $95$% de nivel de confianza.
+
+b. El director de la OMS considera que el intervalo es insatisfactorio, pero quiere mantener el nivel de confianza. Por ello decide reducir a la mitad la precisión de dicho intervalo (reducir un $50$% el radio del intervalo.. En estas condiciones, ¿cuál debería ser el tamaño de la muestra para cumplir los objetivos del director?
+
+c. Los resultados obtenidos en los análisis anteriores siguen sin convencer al director de la OMS y le pide a su equipo que establezca un intervalo de confianza para la media poblacional con un $99$% de nivel de confianza, manteniendo la misma muestra del ejercicio anterior.
+
+d. El director decide reducir en un tercio la precisión del intervalo anterior, pero quiere mantener el nivel de confianza ¿cuál debería ser el tamaño de la muestra para cumplir dicho objetivo?
+:::
+
+:::{#exr-intervalo-confianza-proporcion-uso-alta-velocidad}
+Tras la liberalización del transporte ferroviario de pasajeros en las líneas de alta velocidad en España, la compañía francesa SNCF estudia la proporción de clientes que utiliza al menos una vez al mes el servicio de alta velocidad. A tal efecto la empresa realiza un muestreo aleatorio en el que se seleccionan $50$ usuarios y en el que resulta que $35$ de ellos afirma utilizar este servicio una vez al mes como mínimo.
+
+Considerando un nivel de confianza del $98$% determine un intervalo de confianza poblacional para la proporción de usuarios que utilizan la alta velocidad una vez al mes por lo menos (justifique cómo obtiene el intervalo de confianza antes de proceder a su cálculo..
+:::

@@ -1,0 +1,7 @@
+---
+lang: es
+---
+
+# Prefacio {.unnumbered}
+
+Colección de problemas de Estadística aplicada a la Economía para el Master en Análisis y Comunicación de Datos.
