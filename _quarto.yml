@@ -14,10 +14,10 @@ website:
       openSidebar: true
 
 book:
-  title: "Problemas de Análisis Matemático"
+  title: "Problemas de Estadística"
   author: "Alfredo Sánchez Alberca"
   date: "1/6/2022"
-  output-file: "ejercicios-analisis"
+  output-file: "ejercicios-estadistica"
   image: img/logos/sticker.png
   cover-image: img/logos/sticker.png
   sharing: [twitter, linkedin]
