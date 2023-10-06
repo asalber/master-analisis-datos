@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Problemas de Estadística - 1&nbsp; Estimación de parámetros</title>
+<title>Problemas de Estadística - 2&nbsp; Contrastes de hipótesis paramétricos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07-contrastes-parametricos.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./06-estimacion.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -68,11 +67,9 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Problemas de Estadística - 1&nbsp; Estimación de parámetros">
-<meta property="og:description" content="">
+<meta property="og:title" content="Problemas de Estadística - 2&nbsp; Contrastes de hipótesis paramétricos">
 <meta property="og:site-name" content="Problemas de Estadística">
-<meta name="twitter:title" content="Problemas de Estadística - 1&nbsp; Estimación de parámetros">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Problemas de Estadística - 2&nbsp; Contrastes de hipótesis paramétricos">
 <meta name="twitter:site" content="@aprendeconalf">
 <meta name="twitter:card" content="summary">
 </head>
@@ -86,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-estimacion.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-contrastes-parametricos.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -160,13 +157,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-estimacion.html" class="sidebar-item-text sidebar-link active">
+  <a href="./06-estimacion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
+  <a href="./07-contrastes-parametricos.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
   </div>
 </li>
@@ -183,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></h1>
 </div>
 
 
@@ -198,114 +195,61 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div id="exr-distribucion-media-trabajadores-pymes" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.1 </strong></span>El número medio de trabajadores en las PYMES españolas es 5 y su varianza 4. Realizado un muestreo aleatorio de 16 PYMES.</p>
-<p>Calcular:</p>
+<div id="exr-contraste-media-consumo-azucar" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.1 </strong></span>Sabiendo que el año pasado el consumo per cápita de azúcar en España fue de 4.8 kg y que este consumo sigue una distribución normal, hemos seleccionado aleatoriamente a 20 españoles obteniendo una media muestral de 5 kg y una cuasidesviación típica muestral de 0.4 kg. Contrastar la hipótesis de que el consumo de azúcar per cápita de este año en España no ha variado utilizando un nivel de significación del 10% en cada uno de los casos siguientes.</p>
 <ol type="a">
-<li><p>La esperanza y varianza de la media muestral.</p></li>
-<li><p>La esperanza de la varianza y de la cuasivarianza muestral.</p></li>
-<li><p>Mínimo tamaño que ha de tener la muestra para que exista una probabilidad mayor o igual al <span class="math inline">\(95\)</span>% de que la media muestral se desvíe de la media poblacional a lo sumo <span class="math inline">\(0.25\)</span> unidades.</p></li>
-<li><p>Si realizamos un muestreo aleatorio de tamaño <span class="math inline">\(320\)</span> obtener <span class="math inline">\(P(4.9\leq \bar x \leq 5.2.\)</span>.</p></li>
+<li><p>Suponiendo que la alternativa es que el consumo de azúcar per cápita sea distinto.</p></li>
+<li><p>Suponiendo que la alternativa es que el consumo de azúcar per cápita sea mayor.</p></li>
 </ol>
 </div>
-<div id="exr-distribucion-cuasivarianza-iberpapel" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.2 </strong></span>El precio de las acciones de Iberpapel se distribuyen según un modelo normal <span class="math inline">\(N(\mu, 2.\)</span>, analizar <span class="math inline">\(16\)</span> sesiones de la Bolsa de Madrid elegidas aleatoriamente, para calcular la probabilidad de que la cuasivarianza muestral del precio de las acciones sea mayor o igual que <span class="math inline">\(2.136\)</span>.</p>
+<div id="exr-contraste-proporcion-asistencia-clase" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.2 </strong></span>En una clase de Estadística se ha comprobado que el 20% del alumnado falta a clase. Para disminuir esta preocupante cifra, los profesores han incorporado un sistema de evaluación continua que tendrá en cuenta las notas de clase de los alumnos en la nota final. Contraste con un nivel de significación del 5% que la incorporación de este método no es efectiva, es decir, el absentismo antes y después de la evaluación continua es el mismo, sabiendo que el porcentaje medio de no asistencia en 50 días tomados al azar ha sido del 17%.</p>
 </div>
-<div id="exr-diferencia-proporciones-votos" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.3 </strong></span>El porcentaje de votantes con preferencia de un determinado partido es del <span class="math inline">\(5\)</span>% en una región <span class="math inline">\(A\)</span>, y el <span class="math inline">\(10\)</span>% en otra <span class="math inline">\(B\)</span>. Consultados <span class="math inline">\(100\)</span> electores de la región <span class="math inline">\(A\)</span> y <span class="math inline">\(150\)</span> de la <span class="math inline">\(B\)</span>, determinar la probabilidad de que el porcentaje de electores consultados favorables a dicho partido en la segunda región supere en más de <span class="math inline">\(0.02\)</span> al porcentaje de electores favorables a dicho partido en la primera.</p>
+<div id="exr-contraste-media-detergente" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.3 </strong></span>Una empresa fabricante de detergente afirma que el contenido de cada paquete de detergente sigue una distribución normal de media 2150 g, pero una Asociación de Consumidores no está conforme con esta afirmación, por lo que realiza un estudio consistente en obtener una muestra aleatoria simple de 121 paquetes de detergente, obteniendo un contenido medio muestral de 2070 g y una cuasidesviación típica muestral de 130 grs. Contraste esta hipótesis con un nivel de significación del 5%.</p>
 </div>
-<div id="exr-intervalo-confianza-media-demanda" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.4 </strong></span>Una empresa desea estudiar la demanda futura de uno de sus productos, para lo cual selecciona, mediante muestreo aleatorio simple, a diez de sus clientes, observando el número de unidades demandadas por ellos:</p>
-<div class="columns">
-<div class="column" style="width:10%;">
-
-</div><div class="column" style="width:80%;">
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Número de unidades demandadas</th>
-<th style="text-align: right;">Número de clientes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">106</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
+<div id="exr-contraste-proporcion-aprobados" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.4 </strong></span>El número de aprobados en una asignatura de un determinado curso ha sido del 64%. En uno de los grupos de ese curso se han presentado al examen 40 alumnos de los que 31 aprobaron. ¿Puede afirmarse con un nivel de significación del 5% que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso?</p>
 </div>
+<div id="exr-contraste-media-consumo" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.5 </strong></span>Se sabe que el consumo anual de helado correspondiente a cada español sigue una distribución normal y que el año pasado el consumo medio fue de 20 kg. Queremos contrastar si este año se va a mantener el consumo medio de helado que el año pasado, y para comprobarlo se efectúa una muestra aleatoria de 22 españoles, obteniéndose los siguientes resultados:</p>
+<div style="text-align: center">
+<p>15, 18, 24, 31, 22, 12, 6, 35, 42, 2, 16, 25, 20, 10, 17, 19, 14, 30, 14, 23, 15, 19.</p>
 </div>
+<p>Realizar el contraste con un nivel de significación de 0.10.</p>
 </div>
-<p>Suponiendo que la demanda sigue una distribución normal.</p>
+<div id="exr-contraste-varianza-telefonica" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.6 </strong></span>Telefónica ha constatado que el consumo de datos de los clientes que han contratado el paquete Fusión (fibra simétrica, TV, teléfono fijo y móvil. sigue una distribución normal cuya dispersión viene determinada por <span class="math inline">\(\sigma\)</span>=3 Gb. Sin embargo, tras la incorporación de Netflix a la oferta de Movistar TV se ha observado que la dispersión habría podido cambiar, por lo que se ha llevado a cabo un muestreo con 15 clientes en el que la cuasidesviación típica es igual a 3.5 Gb.</p>
+<p>Determine si efectivamente la varianza en el consumo de datos de los clientes Fusión ha cambiado tras la incorporación de Netflix y especifique la región crítica óptima utilizando un nivel de significación del 2%.</p>
+</div>
+<div id="exr-contraste-media-peso" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.7 </strong></span>La OMS está preocupada por el incremento de la obesidad entre los niños de entre 11 y 14 años. La variable peso de los niños se distribuye según una normal. El equipo formula la hipótesis de que el peso medio de los niños de entre 11 y 14 años es de 46.5 kg. Seleccionada una muestra aleatoria de 40 niños, se obtiene que la media muestral es 49 kg y la cuasidesviación típica muestral vale 7 kg.</p>
+<p>Contrastar con un nivel de significación del 10% que el peso medio de los niños de entre 11 y 14 años sea 46.5 kg, frente a que sea mayor.</p>
+</div>
+<div id="exr-contraste-proporcion-consumo-producto" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.8 </strong></span>Al lanzar un nuevo producto al mercado, el fabricante duda entre que sea adquirido por el 20% de la población o que sea adquirido por el 30%. Seleccionada al azar una muestra de 400 posibles compradores del producto se obtiene que la demandaría el 22%. La regla de decisión que utilizaremos es aceptar la hipótesis nula si adquieren el producto menos del 25% de los consultados.</p>
 <ol type="a">
-<li>Estimar la demanda media mediante un intervalo de confianza con nivel de significación <span class="math inline">\(0.1\)</span>.</li>
-<li>¿Qué tamaño muestral sería necesario para que el intervalo tuviese un error máximo de <span class="math inline">\(\pm 1\)</span> unidad? :::</li>
-</ol>
-<div id="exr-intervalo-confianza-media-bitcoin" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.5 </strong></span>Al objeto de determinar la proporción de españoles que poseen la criptomoneda bitcoin se ha realizado un muestreo aleatorio de <span class="math inline">\(100\)</span> españoles, resultando que <span class="math inline">\(15\)</span> tienen bitcoins.</p>
-<ol type="a">
-<li><p>Obtener un intervalo de confianza del <span class="math inline">\(95\)</span>% para la proporción poblacional de españoles que poseen bitcoins.</p></li>
-<li><p>¿A cuántos españoles se debería encuestar para lograr una semiamplitud del intervalo de <span class="math inline">\(0.02\)</span>, utilizando un nivel de confianza del <span class="math inline">\(80\)</span>%?</p></li>
+<li><p>¿Se puede aceptar la hipótesis nula?</p></li>
+<li><p>Calcular el nivel de significación del contraste.</p></li>
+<li><p>Obtener la potencia del contraste.</p></li>
 </ol>
 </div>
-<div id="exr-intervalo-confianza-proporcion-covid" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.6 </strong></span>Para conocer la prevalencia de la COVID en una población se ha tomado una muestra aleatoria de <span class="math inline">\(500\)</span> personas y se ha observado que <span class="math inline">\(36\)</span> tenían COVID. ¿Qué precisión tiene el intervalo de confianza del <span class="math inline">\(95\)</span>% para la proporción de personas infectadas en la población? ¿Qué tamaño muestral habría que tomar para doblar la precisión del intervalo?</p>
-</div>
-<div id="exr-intervalo-confianza-proporcion-demanda" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.7 </strong></span>Una empresa quiere conocer la proporción de clientes dispuestos a demandar un nuevo producto, para averiguarlo efectúa un muestreo aleatorio de tamaño <span class="math inline">\(100\)</span> en el que se obtiene que un <span class="math inline">\(20\)</span>% de ellos estarían dispuestos a comprar el nuevo producto. Determinar el intervalo de confianza para la proporción poblacional con un grado de confianza del <span class="math inline">\(90\)</span>%.</p>
-</div>
-<div id="exr-intervalo-confianza-media-varianza-gasto-alimentacion" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.8 </strong></span>En una comunidad autónoma, los gastos semanales en alimentación por unidad familiar se distribuyen según un modelo normal <span class="math inline">\(N(\mu,\sigma.\)</span>. Realizado un muestreo aleatorio en el que se han consultado a <span class="math inline">\(21\)</span> unidades familiares hemos obtenido que el gasto medio semanal muestral es de <span class="math inline">\(150\)</span> euros y la cuasidesviación típica semanal muestral es de <span class="math inline">\(12\)</span> euros.</p>
+<div id="exr-contraste-media-consumo-electrico" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.9 </strong></span>Según los datos publicados por REE (Red Eléctrica Española. el consumo medio diario de electricidad en los hogares españoles es de 9,55 watios/hora. La compañía comercializadora de electricidad Holaluz sabe que el citado consumo sigue una distribución normal, pero debe determinar cuál será el consumo medio en el que basará su estrategia de cara a 2021, ya que el aumento del teletrabajo podría provocar que el referido consumo medio varíe en el nuevo ejercicio y se incremente a 12,50 watios/hora, por lo que ha llevado a cabo un muestra aleatoria con 25 clientes en el que la media muestral ha resultado ser igual a un consumo de 12,17 watios/hora mientras que la cuasivarianza es igual a 9.</p>
 <ol type="a">
-<li><p>Construir un intervalo de confianza del <span class="math inline">\(95\)</span>% para el gasto medio semanal poblacional.</p></li>
-<li><p>Construir un intervalo de confianza del <span class="math inline">\(95\)</span>% para la varianza poblacional.</p></li>
+<li><p>¿Con que hipótesis debería trabajar Holaluz en 2021 si se considera un nivel de significación del 1%?</p></li>
+<li><p>¿Cuál es la potencia del contraste?</p></li>
 </ol>
 </div>
-<div id="exr-intervalo-confianza-media-varianza-gasto-porcino" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.9 </strong></span>Los gastos mensuales en carne de porcino en las familias españolas se distribuyen según un modelo normal <span class="math inline">\(N(\mu, \sigma.\)</span>. Realizando un muestreo aleatorio en el que se pregunta a <span class="math inline">\(20\)</span> unidades familiares, se obtiene que el gasto medio mensual ha sido de <span class="math inline">\(170.31\)</span> € y la cuasidesviación típica de <span class="math inline">\(36\)</span> €.</p>
+<div id="exr-contraste-proporcion-vacunados-covid" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.10 </strong></span>En la campaña de vacunación que recientemente ha comenzado en España para hacer frente a la pandemia provocada por la COVID, se ha estimado que un 24% de la población se negará a recibir la vacuna. No obstante, se cree que a medida que el proceso de vacunación avance, este porcentaje podría variar y reducirse al 19%, por lo que se ha decidido realizar un muestreo aleatorio entre la población española a los pocos días de comenzar la campaña de vacunación en el que se ha preguntado a 200 personas si se vacunarán cuando sean citados por las autoridades sanitarias, habiendo respondido 42 personas que no acudirán a vacunarse aduciendo diversas razones.</p>
 <ol type="a">
-<li><p>Obtener el intervalo de confianza para el gasto medio mensual en carne de porcino con un <span class="math inline">\(95\)</span>% de confianza.</p></li>
-<li><p>Razone cómo podría obtener un intervalo de confianza más preciso para el gasto medio, suponiendo que no varían la media muestral, la cuasivarianza muestral y el tamaño de la muestra.</p></li>
-<li><p>Obtener el intervalo de confianza para la varianza del gasto mensual en carne de porcino con un <span class="math inline">\(95\)</span>% de confianza.</p></li>
+<li><p>Aplicando un nivel de significación del 2% ¿se podría afirmar que el porcentaje de personas que se niegan a vacunarse ha cambiado?</p></li>
+<li><p>¿Cuál es la potencia del contraste?</p></li>
 </ol>
 </div>
-<div id="exr-intervalo-confianza-media-peso" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.10 </strong></span>La OMS ha obtenido una muestra de los pesos de <span class="math inline">\(50\)</span> niños de entre <span class="math inline">\(11\)</span> y <span class="math inline">\(14\)</span> años, que proporciona una media muestral de <span class="math inline">\(47\)</span> kg y una desviación típica muestral de <span class="math inline">\(11\)</span> kg. Suponiendo que la población sigue una distribución normal.</p>
-<ol type="a">
-<li><p>Obtener un intervalo de confianza para la media poblacional con un <span class="math inline">\(95\)</span>% de nivel de confianza.</p></li>
-<li><p>El director de la OMS considera que el intervalo es insatisfactorio, pero quiere mantener el nivel de confianza. Por ello decide reducir a la mitad la precisión de dicho intervalo (reducir un <span class="math inline">\(50\)</span>% el radio del intervalo.. En estas condiciones, ¿cuál debería ser el tamaño de la muestra para cumplir los objetivos del director?</p></li>
-<li><p>Los resultados obtenidos en los análisis anteriores siguen sin convencer al director de la OMS y le pide a su equipo que establezca un intervalo de confianza para la media poblacional con un <span class="math inline">\(99\)</span>% de nivel de confianza, manteniendo la misma muestra del ejercicio anterior.</p></li>
-<li><p>El director decide reducir en un tercio la precisión del intervalo anterior, pero quiere mantener el nivel de confianza ¿cuál debería ser el tamaño de la muestra para cumplir dicho objetivo?</p></li>
-</ol>
-</div>
-<div id="exr-intervalo-confianza-proporcion-uso-alta-velocidad" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.11 </strong></span>Tras la liberalización del transporte ferroviario de pasajeros en las líneas de alta velocidad en España, la compañía francesa SNCF estudia la proporción de clientes que utiliza al menos una vez al mes el servicio de alta velocidad. A tal efecto la empresa realiza un muestreo aleatorio en el que se seleccionan <span class="math inline">\(50\)</span> usuarios y en el que resulta que <span class="math inline">\(35\)</span> de ellos afirma utilizar este servicio una vez al mes como mínimo.</p>
-<p>Considerando un nivel de confianza del <span class="math inline">\(98\)</span>% determine un intervalo de confianza poblacional para la proporción de usuarios que utilizan la alta velocidad una vez al mes por lo menos (justifique cómo obtiene el intervalo de confianza antes de proceder a su cálculo..</p>
+<div id="exr-contraste-varianza-principio-activo" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.11 </strong></span>Se sabe que el contenido de principio activo de los medicamentos producidos por una máquina sigue una distribución normal con varianza 0.2 mg/ml. Tras una revisión de mantenimiento y calibración de la máquina se cree que la variabilidad del contenido de principio activo ha disminuido 0.1 mg/ml. Para contrastarlo, se ha tomado una muestra de 10 medicamentos en los que se ha observado una varianza de 0.12 mg/ml. ¿Se puede aceptar la hipótesis de que la variabilidad ha disminuido 0.1 mg/ml?</p>
 </div>
 
 
@@ -661,14 +605,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
+      <a href="./06-estimacion.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-contrastes-parametricos.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

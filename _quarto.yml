@@ -34,6 +34,7 @@ book:
   chapters:
     - index.qmd
     - 06-estimacion.qmd
+    - 07-contrastes-parametricos.qmd
     
 #bibliography: references.bib
 

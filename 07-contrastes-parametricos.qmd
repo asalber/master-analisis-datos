@@ -1,0 +1,80 @@
+---
+title: Contrastes de hipótesis paramétricos
+lang: es
+---
+
+
+
+:::{#exr-contraste-media-consumo-azucar}
+Sabiendo que el año pasado el consumo per cápita de azúcar en España fue de 4.8 kg y que este consumo sigue una distribución normal, hemos seleccionado aleatoriamente a 20 españoles obteniendo una media muestral de 5 kg y una cuasidesviación típica muestral de 0.4 kg. Contrastar la hipótesis de que el consumo de azúcar per cápita de este año en España no ha variado utilizando un nivel de significación del 10% en cada uno de los casos siguientes.
+
+a. Suponiendo que la alternativa es que el consumo de azúcar per cápita sea distinto.
+
+b. Suponiendo que la alternativa es que el consumo de azúcar per cápita sea mayor.
+:::
+
+:::{#exr-contraste-proporcion-asistencia-clase}
+En una clase de Estadística se ha comprobado que el 20% del alumnado falta a clase. Para disminuir esta preocupante cifra, los profesores han incorporado un sistema de evaluación continua que tendrá en cuenta las notas de clase de los alumnos en la nota final. Contraste con un nivel de significación del 5% que la incorporación de este método no es efectiva, es decir, el absentismo antes y después de la evaluación continua es el mismo, sabiendo que el porcentaje medio de no asistencia en 50 días tomados al azar ha sido del 17%.
+:::
+
+:::{#exr-contraste-media-detergente}
+Una empresa fabricante de detergente afirma que el contenido de cada paquete de detergente sigue una distribución normal de media 2150 g, pero una Asociación de Consumidores no está conforme con esta afirmación, por lo que realiza un estudio consistente en obtener una muestra aleatoria simple de 121 paquetes de detergente, obteniendo un contenido medio muestral de 2070 g y una cuasidesviación típica muestral de 130 grs. Contraste esta hipótesis con un nivel de significación del 5%.
+:::
+
+:::{#exr-contraste-proporcion-aprobados}
+El número de aprobados en una asignatura de un determinado curso ha sido del 64%. En uno de los grupos de ese curso se han presentado al examen 40 alumnos de los que 31 aprobaron. ¿Puede afirmarse con un nivel de significación del 5% que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso?
+:::
+
+:::{#exr-contraste-media-consumo}
+Se sabe que el consumo anual de helado correspondiente a cada español sigue una distribución normal y que el año pasado el consumo medio fue de 20 kg.  Queremos contrastar si este año se va a mantener el consumo medio de helado que el año pasado, y para comprobarlo se efectúa una muestra aleatoria de 22 españoles, obteniéndose los siguientes resultados: 
+
+<div style="text-align: center">
+15, 18, 24, 31, 22, 12, 6, 35, 42, 2, 16, 25, 20, 10, 17, 19, 14, 30, 14, 23, 15, 19.
+</div>
+
+Realizar el contraste con un nivel de significación de 0.10.
+:::
+
+:::{#exr-contraste-varianza-telefonica}
+Telefónica ha constatado que el consumo de datos de los clientes que han contratado el paquete Fusión (fibra simétrica, TV, teléfono fijo y móvil. sigue una distribución normal cuya dispersión viene determinada por $\sigma$=3 Gb. Sin embargo, tras la incorporación de Netflix a la oferta de Movistar TV se ha observado que la dispersión habría podido cambiar, por lo que se ha llevado a cabo un muestreo con 15 clientes en el que la cuasidesviación típica es igual a 3.5 Gb.
+
+Determine si efectivamente la varianza en el consumo de datos de los clientes Fusión ha cambiado tras la incorporación de Netflix y especifique la región crítica óptima utilizando un nivel de significación del 2%.
+:::
+
+:::{#exr-contraste-media-peso}
+La OMS está preocupada por el incremento de la obesidad entre los niños de entre 11 y 14 años. La variable peso de los niños se distribuye según una normal. El equipo formula la hipótesis de que el peso medio de los niños de entre 11 y 14 años es de 46.5 kg. Seleccionada una muestra aleatoria de 40 niños, se obtiene que la media muestral es 49 kg y la cuasidesviación típica muestral  vale 7 kg.
+
+Contrastar con un nivel de significación del 10% que el peso medio de los niños de entre 11 y 14 años sea 46.5 kg, frente a que sea mayor.
+:::
+
+:::{#exr-contraste-proporcion-consumo-producto}
+Al lanzar un nuevo producto al mercado, el fabricante duda entre que sea adquirido por el 20% de la población o que sea adquirido por el 30%. Seleccionada al azar una muestra de 400 posibles compradores del producto se obtiene que la demandaría el 22%. La regla de decisión que utilizaremos es aceptar la hipótesis nula si adquieren el producto menos del 25% de los consultados.
+
+a. ¿Se puede aceptar la hipótesis nula?
+
+b. Calcular el nivel de significación del contraste.
+
+c. Obtener la potencia del contraste.
+:::
+
+:::{#exr-contraste-media-consumo-electrico}
+Según los datos publicados por REE (Red Eléctrica Española. el consumo medio diario de electricidad en los hogares españoles es de 9,55 watios/hora. La compañía comercializadora de electricidad Holaluz sabe que el citado consumo sigue una distribución normal, pero debe determinar cuál será el consumo medio en el que basará su estrategia de cara a 2021, ya que el aumento del teletrabajo podría provocar que el referido consumo medio varíe en el nuevo ejercicio y se incremente a 12,50 watios/hora, por lo que ha llevado a cabo un muestra aleatoria con 25 clientes en el que la media muestral ha resultado ser igual a un consumo de 12,17 watios/hora mientras que la cuasivarianza es igual a 9.
+
+a. ¿Con que hipótesis debería trabajar Holaluz en 2021 si se considera un nivel de significación del 1%?
+
+b. ¿Cuál es la potencia del contraste?
+:::
+
+:::{#exr-contraste-proporcion-vacunados-covid}
+En la campaña de vacunación que recientemente ha comenzado en España para hacer frente a la pandemia provocada por la COVID, se ha estimado que un 24% de la población se negará a recibir la vacuna. No obstante, se cree que a medida que el proceso de vacunación avance, este porcentaje podría variar y reducirse al 19%, por lo que se ha decidido realizar un muestreo aleatorio entre la población española a los pocos días de comenzar la campaña de vacunación en el que se ha preguntado a 200 personas si se vacunarán cuando sean citados por las autoridades sanitarias, habiendo respondido 42 personas que no acudirán a vacunarse aduciendo diversas razones.
+
+a. Aplicando un nivel de significación del 2% ¿se podría afirmar que el porcentaje de personas que se niegan a vacunarse ha cambiado?
+
+b. ¿Cuál es la potencia del contraste?
+:::
+
+:::{#exr-contraste-varianza-principio-activo}
+Se sabe que el contenido de principio activo de los medicamentos producidos por una máquina sigue una distribución normal con varianza 0.2 mg/ml. Tras una revisión de mantenimiento y calibración de la máquina se cree que la variabilidad del contenido de principio activo ha disminuido 0.1 mg/ml. Para contrastarlo, se ha tomado una muestra de 10 medicamentos en los que se ha observado una varianza de 0.12 mg/ml. ¿Se puede aceptar la hipótesis de que la variabilidad ha disminuido 0.1 mg/ml?
+:::
+
+
