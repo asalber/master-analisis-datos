@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.0">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -50,7 +50,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -59,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -68,13 +75,40 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta property="og:title" content="Problemas de Estadística - 1&nbsp; Estimación de parámetros">
-<meta property="og:description" content="">
-<meta property="og:site-name" content="Problemas de Estadística">
+<meta property="og:image" content="img/logos/sticker.png">
+<meta property="og:site_name" content="Problemas de Estadística">
 <meta name="twitter:title" content="Problemas de Estadística - 1&nbsp; Estimación de parámetros">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="img/logos/sticker.png">
 <meta name="twitter:site" content="@aprendeconalf">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating">
@@ -83,12 +117,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-estimacion.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-estimacion.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estimación de parámetros</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -98,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -106,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Problemas de Estadística</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://aprendeconalf.es" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -173,7 +207,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
@@ -196,116 +230,361 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
-<div id="exr-distribucion-media-trabajadores-pymes" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.1 </strong></span>El número medio de trabajadores en las PYMES españolas es 5 y su varianza 4. Realizado un muestreo aleatorio de 16 PYMES.</p>
-<p>Calcular:</p>
+
+<div id="exr-distribución-media-trabajadores-pymes" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.1</strong></span> El número medio de trabajadores en las PYMES españolas es <span class="math inline">\(5\)</span> y su varianza <span class="math inline">\(4\)</span>. Realizado un muestreo aleatorio de <span class="math inline">\(16\)</span> PYMES, calcular:</p>
 <ol type="a">
 <li><p>La esperanza y varianza de la media muestral.</p></li>
 <li><p>La esperanza de la varianza y de la cuasivarianza muestral.</p></li>
-<li><p>Mínimo tamaño que ha de tener la muestra para que exista una probabilidad mayor o igual al <span class="math inline">\(95\)</span>% de que la media muestral se desvíe de la media poblacional a lo sumo <span class="math inline">\(0.25\)</span> unidades.</p></li>
-<li><p>Si realizamos un muestreo aleatorio de tamaño <span class="math inline">\(320\)</span> obtener <span class="math inline">\(P(4.9\leq \bar x \leq 5.2.\)</span>.</p></li>
+<li><p>Mínimo tamaño que ha de tener la muestra para que exista una probabilidad mayor o igual al <span class="math inline">\(95\)</span>% de que la media muestral se desvíe de la media poblacional a lo sumo <span class="math inline">\(0.5\)</span> unidades.</p></li>
+<li><p>Si realizamos un muestreo aleatorio de tamaño <span class="math inline">\(320\)</span> obtener <span class="math inline">\(P(4.9\leq \bar x  \leq 5.2)\)</span>.</p></li>
 </ol>
 </div>
-<div id="exr-distribucion-cuasivarianza-iberpapel" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.2 </strong></span>El precio de las acciones de Iberpapel se distribuyen según un modelo normal <span class="math inline">\(N(\mu, 2.\)</span>, analizar <span class="math inline">\(16\)</span> sesiones de la Bolsa de Madrid elegidas aleatoriamente, para calcular la probabilidad de que la cuasivarianza muestral del precio de las acciones sea mayor o igual que <span class="math inline">\(2.136\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\)</span> la variable aleatoria que mide el número de trabajadores en una muestra de 16 PYMES españolas.</p>
+<ol type="a">
+<li><span class="math inline">\(E(\bar x) = 5\)</span> y <span class="math inline">\(Var(\bar x) = \frac{4}{16} = 0.25\)</span>.</li>
+<li><span class="math inline">\(E(s^2) = 3.75\)</span> y <span class="math inline">\(E(\hat s^2) = 4\)</span>.</li>
+<li><span class="math inline">\(P(|\bar x - 5| \leq 0.5) = 0.95\)</span> si <span class="math inline">\(n\geq 320\)</span>.</li>
+<li>Sea <span class="math inline">\(Y\)</span> la variable aleatoria que mide el número de trabajadores en una muestra de 320 PYMES españolas. Entonces, <span class="math inline">\(Y\sim N\left(5, \sqrt{\frac{4}{320}}\right)\)</span> y <span class="math inline">\(P(4.9\leq \bar x  \leq 5.2) = 0.777\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="exr-distribución-cuasivarianza-iberpapel" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.2</strong></span> El precio de las acciones de Iberpapel se distribuyen según un modelo normal <span class="math inline">\(N(\mu, 2)\)</span>. Si se analizan <span class="math inline">\(16\)</span> sesiones de la Bolsa de Madrid elegidas aleatoriamente, ¿cuál es la probabilidad de que la cuasivarianza muestral del precio de las acciones sea mayor o igual que <span class="math inline">\(2.136\)</span>?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sabemos que <span class="math inline">\(\frac{ns^2}{\sigma^2}\sim \chi^2(n-1)\)</span>. Por tanto, <span class="math inline">\(P(\hat s^2\geq 2.136) = P\left(\frac{16\cdot s^2}{2}\geq 4\cdot 2.136\right) = P\left(\chi^2(15)\geq 8.544\right) = 0.9\)</span>.</p>
+</div>
+</div>
 </div>
 <div id="exr-diferencia-proporciones-votos" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.3 </strong></span>El porcentaje de votantes con preferencia de un determinado partido es del <span class="math inline">\(5\)</span>% en una región <span class="math inline">\(A\)</span>, y el <span class="math inline">\(10\)</span>% en otra <span class="math inline">\(B\)</span>. Consultados <span class="math inline">\(100\)</span> electores de la región <span class="math inline">\(A\)</span> y <span class="math inline">\(150\)</span> de la <span class="math inline">\(B\)</span>, determinar la probabilidad de que el porcentaje de electores consultados favorables a dicho partido en la segunda región supere en más de <span class="math inline">\(0.02\)</span> al porcentaje de electores favorables a dicho partido en la primera.</p>
+<p><span class="theorem-title"><strong>Ejercicio 1.3</strong></span> El porcentaje de votantes con preferencia de un determinado partido es del <span class="math inline">\(5\)</span>% en una región <span class="math inline">\(A\)</span>, y el <span class="math inline">\(10\)</span>% en otra <span class="math inline">\(B\)</span>. Consultados <span class="math inline">\(100\)</span> electores de la región <span class="math inline">\(A\)</span> y <span class="math inline">\(150\)</span> de la <span class="math inline">\(B\)</span>, determinar la probabilidad de que el porcentaje de electores consultados favorables a dicho partido en la segunda región supere en más de <span class="math inline">\(2\)</span>% al porcentaje de electores favorables a dicho partido en la primera.</p>
 </div>
-<div id="exr-intervalo-confianza-media-demanda" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.4 </strong></span>Una empresa desea estudiar la demanda futura de uno de sus productos, para lo cual selecciona, mediante muestreo aleatorio simple, a diez de sus clientes, observando el número de unidades demandadas por ellos:</p>
-<div class="columns">
-<div class="column" style="width:10%;">
-
-</div><div class="column" style="width:80%;">
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Número de unidades demandadas</th>
-<th style="text-align: right;">Número de clientes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">106</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X_1\)</span> proporción de votantes favorables al partido en la región <span class="math inline">\(A\)</span> en una muestra de <span class="math inline">\(100\)</span> electores y <span class="math inline">\(X_2\)</span> proporción de votantes favorables al partido en la región <span class="math inline">\(B\)</span> en una muestra de <span class="math inline">\(150\)</span> electores. Entonces, <span class="math inline">\(X_1\sim N\left(0.05, \sqrt{\frac{0.05\cdot (1-0.05)}{100}}\right)\)</span> y <span class="math inline">\(X_2\sim N\left(0.1, \sqrt{\frac{0.1\cdot (1-0.1)}{150}}\right)\)</span>, y <span class="math inline">\(P(X_2-X_1&gt;0.02) = 0.8212\)</span>.</p>
 </div>
 </div>
 </div>
-<p>Suponiendo que la demanda sigue una distribución normal.</p>
+<div id="exr-intervalo-confianza-media-carne-porcino" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.4</strong></span> Se sabe que el gasto mensual en carne de porcino en las familias españolas se distribuye de manera normal. Se ha realizado un muestreo aleatorio simple en el que se ha preguntado a <span class="math inline">\(20\)</span> familias sobre el gasto mensual en carne de porcino, y se ha obtenido una media de <span class="math inline">\(170.31\)</span> € y una cuasidesviación típica de <span class="math inline">\(36\)</span> €.</p>
 <ol type="a">
-<li>Estimar la demanda media mediante un intervalo de confianza con nivel de significación <span class="math inline">\(0.1\)</span>.</li>
-<li>¿Qué tamaño muestral sería necesario para que el intervalo tuviese un error máximo de <span class="math inline">\(\pm 1\)</span> unidad? :::</li>
-</ol>
-<div id="exr-intervalo-confianza-media-bitcoin" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.5 </strong></span>Al objeto de determinar la proporción de españoles que poseen la criptomoneda bitcoin se ha realizado un muestreo aleatorio de <span class="math inline">\(100\)</span> españoles, resultando que <span class="math inline">\(15\)</span> tienen bitcoins.</p>
-<ol type="a">
-<li><p>Obtener un intervalo de confianza del <span class="math inline">\(95\)</span>% para la proporción poblacional de españoles que poseen bitcoins.</p></li>
-<li><p>¿A cuántos españoles se debería encuestar para lograr una semiamplitud del intervalo de <span class="math inline">\(0.02\)</span>, utilizando un nivel de confianza del <span class="math inline">\(80\)</span>%?</p></li>
+<li><p>Obtener el intervalo de confianza para el gasto medio mensual en carne de porcino con un 95% de confianza.</p></li>
+<li><p>¿Cómo podría obtenerse un intervalo de confianza más preciso para el gasto medio suponiendo que no varían la media muestral, la cuasivarianza muestral y el tamaño de la muestra? ¿Y si no varían la media muestral, la cuasivarianza muestral y el nivel de confianza?</p></li>
+<li><p>Obtener el intervalo de confianza para la desviación típica del gasto mensual en carne de porcino con un 95% de confianza.</p></li>
 </ol>
 </div>
-<div id="exr-intervalo-confianza-proporcion-covid" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.6 </strong></span>Para conocer la prevalencia de la COVID en una población se ha tomado una muestra aleatoria de <span class="math inline">\(500\)</span> personas y se ha observado que <span class="math inline">\(36\)</span> tenían COVID. ¿Qué precisión tiene el intervalo de confianza del <span class="math inline">\(95\)</span>% para la proporción de personas infectadas en la población? ¿Qué tamaño muestral habría que tomar para doblar la precisión del intervalo?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="exr-intervalo-confianza-proporcion-demanda" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.7 </strong></span>Una empresa quiere conocer la proporción de clientes dispuestos a demandar un nuevo producto, para averiguarlo efectúa un muestreo aleatorio de tamaño <span class="math inline">\(100\)</span> en el que se obtiene que un <span class="math inline">\(20\)</span>% de ellos estarían dispuestos a comprar el nuevo producto. Determinar el intervalo de confianza para la proporción poblacional con un grado de confianza del <span class="math inline">\(90\)</span>%.</p>
+<div class="callout-title-container flex-fill">
+Solución
 </div>
-<div id="exr-intervalo-confianza-media-varianza-gasto-alimentacion" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.8 </strong></span>En una comunidad autónoma, los gastos semanales en alimentación por unidad familiar se distribuyen según un modelo normal <span class="math inline">\(N(\mu,\sigma.\)</span>. Realizado un muestreo aleatorio en el que se han consultado a <span class="math inline">\(21\)</span> unidades familiares hemos obtenido que el gasto medio semanal muestral es de <span class="math inline">\(150\)</span> euros y la cuasidesviación típica semanal muestral es de <span class="math inline">\(12\)</span> euros.</p>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide el gasto mensual en carne de porcino en una muestra de 20 familias españolas.</p>
 <ol type="a">
-<li><p>Construir un intervalo de confianza del <span class="math inline">\(95\)</span>% para el gasto medio semanal poblacional.</p></li>
-<li><p>Construir un intervalo de confianza del <span class="math inline">\(95\)</span>% para la varianza poblacional.</p></li>
+<li><p>Usando el intervalo de confianza de la t de Student se tiene <span class="math inline">\(\mu \in (153.46, 187.16)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p></li>
+<li><p>Para obtener un intervalo de confianza más preciso para el gasto medio manteniendo la misma media muestral, cuasivarianza muestral y tamaño de la muestra, se puede reducir el nivel de confianza.</p>
+<p>Y para obtener un intervalo de confianza más preciso para el gasto medio manteniendo la misma media muestral, cuasivarianza muestral y nivel de confianza, se puede aumentar el tamaño de la muestra.</p></li>
+<li><p>Usando el intervalo de confianza de la <span class="math inline">\(\chi^2\)</span> se tiene <span class="math inline">\(\sigma \in (27.37, 52.58)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p></li>
 </ol>
 </div>
-<div id="exr-intervalo-confianza-media-varianza-gasto-porcino" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.9 </strong></span>Los gastos mensuales en carne de porcino en las familias españolas se distribuyen según un modelo normal <span class="math inline">\(N(\mu, \sigma.\)</span>. Realizando un muestreo aleatorio en el que se pregunta a <span class="math inline">\(20\)</span> unidades familiares, se obtiene que el gasto medio mensual ha sido de <span class="math inline">\(170.31\)</span> € y la cuasidesviación típica de <span class="math inline">\(36\)</span> €.</p>
-<ol type="a">
-<li><p>Obtener el intervalo de confianza para el gasto medio mensual en carne de porcino con un <span class="math inline">\(95\)</span>% de confianza.</p></li>
-<li><p>Razone cómo podría obtener un intervalo de confianza más preciso para el gasto medio, suponiendo que no varían la media muestral, la cuasivarianza muestral y el tamaño de la muestra.</p></li>
-<li><p>Obtener el intervalo de confianza para la varianza del gasto mensual en carne de porcino con un <span class="math inline">\(95\)</span>% de confianza.</p></li>
-</ol>
+</div>
 </div>
 <div id="exr-intervalo-confianza-media-peso" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.10 </strong></span>La OMS ha obtenido una muestra de los pesos de <span class="math inline">\(50\)</span> niños de entre <span class="math inline">\(11\)</span> y <span class="math inline">\(14\)</span> años, que proporciona una media muestral de <span class="math inline">\(47\)</span> kg y una desviación típica muestral de <span class="math inline">\(11\)</span> kg. Suponiendo que la población sigue una distribución normal.</p>
+<p><span class="theorem-title"><strong>Ejercicio 1.5</strong></span> La OMS ha obtenido una muestra de los pesos de <span class="math inline">\(50\)</span> niños de <span class="math inline">\(12\)</span> años, que proporciona una media muestral de <span class="math inline">\(47\)</span> kg y una cuasidesviación típica muestral de <span class="math inline">\(11\)</span> kg. Suponiendo que la población sigue una distribución normal:</p>
 <ol type="a">
 <li><p>Obtener un intervalo de confianza para la media poblacional con un <span class="math inline">\(95\)</span>% de nivel de confianza.</p></li>
-<li><p>El director de la OMS considera que el intervalo es insatisfactorio, pero quiere mantener el nivel de confianza. Por ello decide reducir a la mitad la precisión de dicho intervalo (reducir un <span class="math inline">\(50\)</span>% el radio del intervalo.. En estas condiciones, ¿cuál debería ser el tamaño de la muestra para cumplir los objetivos del director?</p></li>
-<li><p>Los resultados obtenidos en los análisis anteriores siguen sin convencer al director de la OMS y le pide a su equipo que establezca un intervalo de confianza para la media poblacional con un <span class="math inline">\(99\)</span>% de nivel de confianza, manteniendo la misma muestra del ejercicio anterior.</p></li>
-<li><p>El director decide reducir en un tercio la precisión del intervalo anterior, pero quiere mantener el nivel de confianza ¿cuál debería ser el tamaño de la muestra para cumplir dicho objetivo?</p></li>
+<li><p>El director de la OMS considera que el intervalo es poco preciso, pero quiere mantener el nivel de confianza. Por ello decide reducir a la mitad la amplitud del intervalo. En estas condiciones, ¿cuál debería ser el tamaño de la muestra para cumplir los objetivos del director?</p></li>
+<li><p>Los resultados obtenidos en los análisis anteriores siguen sin convencer al director de la OMS y le pide a su equipo que establezca un intervalo de confianza para la media poblacional con un <span class="math inline">\(99\)</span>% de nivel de confianza, manteniendo la misma muestra del primer apartado.</p></li>
+<li><p>El director decide reducir en un tercio la amplitud del intervalo anterior, pero quiere mantener el nivel de confianza ¿cuál debería ser el tamaño de la muestra para cumplir dicho objetivo?</p></li>
 </ol>
 </div>
-<div id="exr-intervalo-confianza-proporcion-uso-alta-velocidad" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 1.11 </strong></span>Tras la liberalización del transporte ferroviario de pasajeros en las líneas de alta velocidad en España, la compañía francesa SNCF estudia la proporción de clientes que utiliza al menos una vez al mes el servicio de alta velocidad. A tal efecto la empresa realiza un muestreo aleatorio en el que se seleccionan <span class="math inline">\(50\)</span> usuarios y en el que resulta que <span class="math inline">\(35\)</span> de ellos afirma utilizar este servicio una vez al mes como mínimo.</p>
-<p>Considerando un nivel de confianza del <span class="math inline">\(98\)</span>% determine un intervalo de confianza poblacional para la proporción de usuarios que utilizan la alta velocidad una vez al mes por lo menos (justifique cómo obtiene el intervalo de confianza antes de proceder a su cálculo..</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide el peso de los niños de 12 años.</p>
+<ol type="a">
+<li><p>Usando el intervalo de confianza de la t de Student se tiene <span class="math inline">\(\mu \in (43.88, 50.12)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p></li>
+<li><p>Para reducir a la mitad la amplitud del intervalo manteniendo el nivel de confianza, se debe cuadruplicar el tamaño de la muestra, es decir, se necesita <span class="math inline">\(n=200\)</span> niños.</p></li>
+<li><p>Usando el intervalo de confianza de la t de Student se tiene <span class="math inline">\(\mu \in (42.83, 51.16)\)</span> con una confianza del <span class="math inline">\(99\)</span>%.</p></li>
+<li><p>Para reducir en un tercio la amplitud del intervalo manteniendo el nivel de confianza, se debe multiplicar por <span class="math inline">\(9\)</span> el tamaño de la muestra, es decir, se necesita <span class="math inline">\(n=450\)</span> niños.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-media-ventas-bicicletas" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.6</strong></span> Un fabricante de bicicletas quiere estimar la media de ventas de bicicletas en un año. Para ello, ha tomado una muestra aleatoria simple de <span class="math inline">\(17\)</span> establecimientos, y ha obtenido una media muestral <span class="math inline">\(3650\)</span> bicicletas con una cuasidesviación típica muestral de <span class="math inline">\(55\)</span> bicicletas. Suponiendo que las ventas de bicicletas siguen una distribución normal:</p>
+<ol type="a">
+<li><p>Calcular el intervalo de confianza para la media con un nivel de confianza del 95%.</p></li>
+<li><p>Calcular el intervalo de confianza para la varianza con un grado de confianza del 95%.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide las ventas de bicicletas en un año.</p>
+<ol type="a">
+<li><p>Usando el intervalo de confianza de la t de Student se tiene <span class="math inline">\(\mu \in (3621.70, 3678.30)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p></li>
+<li><p>Usando el intervalo de confianza de la <span class="math inline">\(\chi^2\)</span> se tiene <span class="math inline">\(\sigma^2 \in (1512.5, 7006.38)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-media-bitcoin" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.7</strong></span> Un banco quiere saber el nivel de implantación de la criptomoneda Bitcoin y para ello se ha realizado un muestreo aleatorio simple de <span class="math inline">\(100\)</span> españoles, resultando que <span class="math inline">\(15\)</span> tienen bitcoins.</p>
+<ol type="a">
+<li><p>Obtener un intervalo de confianza del <span class="math inline">\(95\)</span>% para la proporción poblacional de españoles que poseen bitcoins.</p></li>
+<li><p>¿A cuántos españoles se debería encuestar para lograr una semiamplitud del intervalo de <span class="math inline">\(0.02\)</span>, utilizando un nivel de confianza del <span class="math inline">\(90\)</span>%?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim B(100, p)\)</span> la variable aleatoria que mide el número de españoles que poseen bitcoins.</p>
+<ol type="a">
+<li><p>Usando el intervalo de confianza de la normal se tiene <span class="math inline">\(p \in (0.0801, 0.2199)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p></li>
+<li><p>Para lograr una semiamplitud del intervalo de <span class="math inline">\(0.02\)</span> con un nivel de confianza del <span class="math inline">\(90\)</span>%, se necesita encuestar a <span class="math inline">\(n=861\)</span> españoles.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-proporción-covid" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.8</strong></span> Para conocer la prevalencia de la COVID en una población se ha tomado una muestra aleatoria de <span class="math inline">\(500\)</span> personas y se ha observado que <span class="math inline">\(36\)</span> tenían COVID. ¿Qué precisión tiene el intervalo de confianza del <span class="math inline">\(95\)</span>% para la proporción de personas infectadas en la población? ¿Qué tamaño muestral habría que tomar para doblar la precisión del intervalo?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim B(500, p)\)</span> la variable aleatoria que mide el número de personas infectadas por COVID.</p>
+<p>Usando el intervalo de confianza de la normal se tiene el error en la estimación es <span class="math inline">\(E = 0.0227\)</span>, es decir, un <span class="math inline">\(2.27\)</span>%.</p>
+<p>Para doblar la precisión del intervalo se necesita un tamaño muestral de <span class="math inline">\(n=1993\)</span> personas.</p>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-proporción-uso-alta-velocidad" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.9</strong></span> Tras la liberalización del transporte ferroviario de pasajeros en las líneas de alta velocidad en España, la compañía francesa SNCF estudia la proporción de clientes que utiliza al menos una vez al mes el servicio de alta velocidad. A tal efecto la empresa realiza un muestreo aleatorio en el que se seleccionan <span class="math inline">\(50\)</span> usuarios y en el que resulta que <span class="math inline">\(35\)</span> de ellos afirma utilizar este servicio una vez al mes como mínimo. Calcular el intervalo de confianza del <span class="math inline">\(98\)</span>% para la proporción poblacional de usuarios que utilizan la alta velocidad al menos una vez al mes.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim B(50, p)\)</span> la variable aleatoria que mide el número de usuarios que utilizan la alta velocidad una vez al mes como mínimo.</p>
+<p>Usando el intervalo de confianza de la normal se tiene <span class="math inline">\(p \in (0.549, 0.851)\)</span> con una confianza del <span class="math inline">\(98\)</span>%.</p>
+</div>
+</div>
+</div>
+<div id="exr-tamaño-muestra-proporción-encuesta" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.10</strong></span> Leemos en un periódico que la intención de voto a un partido político está entre el <span class="math inline">\(25\)</span>% y el <span class="math inline">\(31\)</span>% con un <span class="math inline">\(95\)</span>% de confianza. ¿Cuál es el tamaño muestral que se ha utilizado para dar esta estimación?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Usando el intervalo de confianza de la normal se tiene que el tamaño muestral necesario para obtener este intervalo para la proporción de personas que votaría al partido es <span class="math inline">\(n=861\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-comparación-proporciones-voto" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.11</strong></span> En una encuesta realizada a <span class="math inline">\(1000\)</span> personas sobre la intención de voto en unas elecciones, <span class="math inline">\(350\)</span> comentaron que votarían al partido <span class="math inline">\(A\)</span> y <span class="math inline">\(390\)</span> al partido <span class="math inline">\(B\)</span>. Calcular los intervalos de confianza del <span class="math inline">\(95\)</span>% para el porcentaje de voto a cada partido. ¿Se puede afirmar con un <span class="math inline">\(95\)</span>% de confianza que el partido <span class="math inline">\(B\)</span> ganaría las elecciones?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(A\sim B(500, p_A)\)</span> la variable aleatoria que mide el número de personas que votarían al partido <span class="math inline">\(A\)</span> y <span class="math inline">\(B\sim B(1000, p_B)\)</span> la variable aleatoria que mide el número de personas que votarían al partido <span class="math inline">\(B\)</span> en una muestra de 1000 personas.</p>
+<p>Usando el intervalo de confianza de la normal se tiene que el porcentaje de voto al partido <span class="math inline">\(A\)</span> está entre el <span class="math inline">\(32.04\)</span>% y el <span class="math inline">\(37.96\)</span>% y el porcentaje de voto al partido <span class="math inline">\(B\)</span> está entre el <span class="math inline">\(35.98\)</span>% y el <span class="math inline">\(42.02\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-ventas-fármaco" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.12</strong></span> Para ver si una campaña de publicidad sobre un fármaco ha influido en sus ventas, se tomó una muestra de <span class="math inline">\(8\)</span> farmacias y se midió el número de fármacos vendidos durante un mes, antes y después de la campaña, obteniéndose los siguientes resultados:</p>
+<p><span class="math display">\[
+\begin{array}{lcccccccc}
+\hline
+\mbox{Antes} &amp; 147 &amp; 163 &amp; 121 &amp; 205 &amp; 132 &amp; 190 &amp; 176 &amp; 147  \\
+\mbox{Después} &amp; 150 &amp; 171 &amp; 132 &amp; 208 &amp; 141 &amp; 184 &amp; 182 &amp; 145  \\
+\hline
+\end{array}
+\]</span></p>
+<p>Obtener la variable diferencia y construir un intervalo de confianza para la media de la diferencia con un nivel de significación <span class="math inline">\(0.05\)</span>. ¿Existen pruebas suficientes para afirmar con un <span class="math inline">\(95\)</span>% de confianza que la campaña de publicidad ha aumentado las ventas?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\)</span> la variable aleatoria que mide la diferencia entre el número de fármacos vendidos en una farmacia en un mes antes y después de la campaña de publicidad.</p>
+<p>Usando el intervalo de confianza de la t de Student se tiene que <span class="math inline">\(\mu \in (-1.75, 21.75)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-comparación-medias-ventas" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.13</strong></span> Se ha realizado un estudio para comparar los ingresos medios de las personas de dos ciudades. Para ello, se ha tomado una muestra de <span class="math inline">\(100\)</span> personas en una ciudad y <span class="math inline">\(120\)</span> en la otra. En la primera ciudad se ha observado una media de <span class="math inline">\(1630\)</span> € mensuales y una cuasidesviación típica de <span class="math inline">\(150\)</span> €, mientras que en la segunda ciudad se ha observado una media de <span class="math inline">\(1780\)</span>€ y una cuasidesviación típica de <span class="math inline">\(160\)</span> €. Calcular el intervalo de confianza del <span class="math inline">\(95\)</span>% para la diferencia de medias de ingresos mensuales entre las dos ciudades.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X_1\sim N(\mu_1, \sigma_1)\)</span> la variable aleatoria que mide los ingresos mensuales de las personas en la primera ciudad y <span class="math inline">\(X_2\sim N(\mu_2, \sigma_2)\)</span> la variable aleatoria que mide los ingresos mensuales de las personas en la segunda ciudad.</p>
+<p>El intervalo de confianza del %95% para el cociente de varianzas es <span class="math inline">\(\frac{\sigma_1 2}{\sigma_2^2}\in (0.6273, 1.2492)\)</span> por lo que podemos asumir varianzas iguales, y el intervalo de confianza para para la diferencia de medias es <span class="math inline">\(\mu_1-\mu_2\in (-191.20, -108.80)\)</span> con una confianza del <span class="math inline">\(95\)</span>%.</p>
+</div>
+</div>
+</div>
+<div id="exr-intervalo-confianza-comparación-proporciones-emisiones" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1.14</strong></span> La siguiente tabla muestra el porcentaje de industrias españolas y europeas según el consumo de energía primaria de las mismas durante el año 2002 (se estudiaron 1000 industrias españolas y 1000 del resto de europa).</p>
+<p><span class="math display">\[
+\begin{array}{lcc}
+\hline
+\mbox{Fuente energética}  &amp;  \mbox{España}  &amp; \mbox{Resto de Europa} \\
+\mbox{Petróleo}            &amp; 52.2\% &amp;    40.4\%     \\
+\mbox{Carbón}              &amp; 15.2\% &amp;    14.8\%     \\
+\mbox{Nuclear}             &amp; 13.0\% &amp;    15.2\%     \\
+\mbox{Gas}                 &amp; 12.8\% &amp;    23.5\%     \\
+\mbox{Energías Renovables} &amp; 6.5\%  &amp;     6.1\%     \\
+\hline
+\end{array}
+\]</span></p>
+<p>Estudiar, según los intervalos de confianza para diferencia de proporciones, para qué energías el porcentaje de industrias de España es significativamente diferente del resto de Europa.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Los intervalos de confianza del <span class="math inline">\(95\)</span>% para la diferencia de proporciones de industrias que usan las diferentes fuentes de energía en España y en el resto de Europa son:</p>
+<ul>
+<li>Petróleo: <span class="math inline">\((0.0747, 0.1613)\)</span>. Hay diferencias significativas.</li>
+<li>Carbón: <span class="math inline">\((-0.0273, 0.0353)\)</span>. No hay diferencias significativas.</li>
+<li>Nuclear: <span class="math inline">\((-0.0525, 0.0085)\)</span>. No hay diferencias significativas.</li>
+<li>Gas: <span class="math inline">\((-0.1405, -0.0735)\)</span>. Hay diferencias significativas.</li>
+<li>Energías Renovables: <span class="math inline">\((-0.0173, 0.0253)\)</span>. No hay diferencias significativas.</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -352,6 +631,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -420,13 +726,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'alternate';
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -505,10 +813,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -518,8 +825,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -532,6 +848,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -575,6 +1010,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -600,6 +1036,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -661,17 +1123,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link  aria-label=" prefacio"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-contrastes-parametricos.html" class="pagination-link">
+      <a href="./07-contrastes-parametricos.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Contrastes de hipótesis paramétricos</span>">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

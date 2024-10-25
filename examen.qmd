@@ -1,0 +1,21 @@
+---
+title: Examen de Complemento Formativo de Estadística
+lang: es
+---
+
+:::{#exr-1}
+Sabiendo que el año pasado el consumo per cápita de azúcar en España fue de 4.8 kg y que este consumo sigue una distribución normal. hemos seleccionado aleatoriamente a 20 españoles obteniendo una media muestral de 5 kg y una cuasidesviación típica muestral de 0.4 kg. Contrastar la hipótesis de que el consumo de azúcar per cápita de este año en España no ha variado utilizando un nivel de significación del 10% en cada uno de los casos siguientes.
+
+a. Suponiendo que la alternativa es que el consumo de azúcar per cápita sea distinto.
+
+b. Suponiendo que la alternativa es que el consumo de azúcar per cápita sea mayor.
+:::
+
+
+7.6, 8.1, 6.2, 4.1, 3.5, 8.5, 2.0, 5.5, 7.4, 6.6 4.4, 3.7, 5.0, 2.8, 4.6, 7.5, 3.8, 4.0, 6.5, 3.2  5.2, 6.7, 4.4, 9.1, 6.4, 7.7, 4.8, 5.2 - 4.6, 5.8 
+
+a. (4.590208, 6.147723)
+b. 
+c. sn1 = 2.0473 y n= 66.8339
+d. p=0.0696
+e. 0.29953
