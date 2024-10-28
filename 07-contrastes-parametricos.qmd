@@ -6,23 +6,48 @@ lang: es
 
 
 :::{#exr-contraste-media-consumo-azucar}
-Sabiendo que el año pasado el consumo per cápita de azúcar en España fue de 4.8 kg y que este consumo sigue una distribución normal, hemos seleccionado aleatoriamente a 20 españoles obteniendo una media muestral de 5 kg y una cuasidesviación típica muestral de 0.4 kg. Contrastar la hipótesis de que el consumo de azúcar per cápita de este año en España no ha variado utilizando un nivel de significación del 10% en cada uno de los casos siguientes.
+Sabiendo que el año pasado el consumo per cápita de azúcar en España fue de $4.8$ kg y que este consumo sigue una distribución normal, hemos seleccionado aleatoriamente a $20$ españoles obteniendo una media muestral de $5$ kg y una cuasidesviación típica muestral de $0.4$ kg. Contrastar la hipótesis de que el consumo de azúcar per cápita de este año en España no ha variado utilizando un nivel de significación del $10$% en cada uno de los casos siguientes.
 
 a. Suponiendo que la alternativa es que el consumo de azúcar per cápita sea distinto.
 
 b. Suponiendo que la alternativa es que el consumo de azúcar per cápita sea mayor.
 :::
 
+:::{.callout-tip collapse="true"}
+## Solución
+Sea $X\sim N(\mu,\sigma)$ la variable aleatoria que mide el consumo per cápita de azúcar en España.
+
+a. La hipótesis nula es $H_0: \mu=4.8$ y la hipótesis alternativa es $H_1: \mu\neq 4.8$. Utilizando el contraste de la t de student, el estadístico de contraste es $t=2.24$ y el p-valor es $p =2 P(t(19)>2.24) = 0.037$. Como el p-valor es menor que el nivel de significación $\alpha = 0.1$, se rechaza la hipótesis nula y se concluye que el consumo de azúcar per cápita de este año en España ha variado.
+
+a. En este caso, la hipótesis nula es $H_0: \mu=4.8$ y la hipótesis alternativa es $H_1: \mu> 4.8$. El estadístico del contraste es el mismo pero ahora el p-valor es $p = P(t(19)>2.24) = 0.0185$. Como el p-valor es menor que el nivel de significación $\alpha = 0.1$, se rechaza la hipótesis nula y se concluye que el consumo de azúcar per cápita de este año en España ha aumentado.
+:::
+
+
 :::{#exr-contraste-proporcion-asistencia-clase}
-En una clase de Estadística se ha comprobado que el 20% del alumnado falta a clase. Para disminuir esta preocupante cifra, los profesores han incorporado un sistema de evaluación continua que tendrá en cuenta las notas de clase de los alumnos en la nota final. Contraste con un nivel de significación del 5% que la incorporación de este método no es efectiva, es decir, el absentismo antes y después de la evaluación continua es el mismo, sabiendo que el porcentaje medio de no asistencia en 50 días tomados al azar ha sido del 17%.
+En una clase de Estadística se ha comprobado que el $20$% del alumnado falta a clase. Para disminuir esta preocupante cifra, los profesores han incorporado un sistema de evaluación continua que tendrá en cuenta las notas de clase de los alumnos en la nota final. Contraste con un nivel de significación del $5$% que la incorporación de este método no es efectiva, es decir, el absentismo antes y después de la evaluación continua es el mismo, sabiendo que el porcentaje medio de no asistencia en $50$ días tomados al azar ha sido del $17$%.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Sea $X\sim B(50,p)$ la variable aleatoria que mide el número de días que falta un alumno a clase. La hipótesis nula es $H_0: p=0.2$ y la hipótesis alternativa es $H_1: p\neq 0.2$. Utilizando el contraste para la proporción de una población, el estadístico de contraste es $z=-1.5$ y el p-valor es $p =2 P(Z<-0.53) = 0.298$. Como el p-valor es mayor que el nivel de significación $\alpha = 0.05$, no se rechaza la hipótesis nula y se concluye que la incorporación de este método no es efectiva.
 :::
 
 :::{#exr-contraste-media-detergente}
-Una empresa fabricante de detergente afirma que el contenido de cada paquete de detergente sigue una distribución normal de media 2150 g, pero una Asociación de Consumidores no está conforme con esta afirmación, por lo que realiza un estudio consistente en obtener una muestra aleatoria simple de 121 paquetes de detergente, obteniendo un contenido medio muestral de 2070 g y una cuasidesviación típica muestral de 130 grs. Contraste esta hipótesis con un nivel de significación del 5%.
+Una empresa fabricante de detergente afirma que el contenido de cada paquete de detergente sigue una distribución normal de media $2150$ g, pero una Asociación de Consumidores no está conforme con esta afirmación, por lo que realiza un estudio consistente en obtener una muestra aleatoria simple de $121$ paquetes de detergente, obteniendo un contenido medio muestral de $2070$ g y una cuasidesviación típica muestral de $130$ grs. Contraste esta hipótesis con un nivel de significación del $5$%.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Sea $X\sim N(\mu,\sigma)$ la variable aleatoria que mide el contenido de cada paquete de detergente. La hipótesis nula es $H_0: \mu=2150$ y la hipótesis alternativa es $H_1: \mu\neq 2150$. Utilizando el contraste de la t de student, el estadístico de contraste es $t=-6.77$ y el p-valor es $p =2 P(t(120)<-6.77) = 0.00005$. Como el p-valor es menor que el nivel de significación $\alpha = 0.05$, se rechaza la hipótesis nula y se concluye contenido promedio de los paquetes de detergente es significativamente diferente de los $2150$ g declarados por la empresa.
 :::
 
 :::{#exr-contraste-proporcion-aprobados}
-El número de aprobados en una asignatura de un determinado curso ha sido del 64%. En uno de los grupos de ese curso se han presentado al examen 40 alumnos de los que 31 aprobaron. ¿Puede afirmarse con un nivel de significación del 5% que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso?
+El número de aprobados en una asignatura de un determinado curso ha sido del $64$%. En uno de los grupos de ese curso se han presentado al examen $40$ alumnos de los que $31$ aprobaron. ¿Puede afirmarse con un nivel de significación del $5$% que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso?
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Sea $X\sim B(40,p)$ la variable aleatoria que mide el número de aprobados en el grupo. La hipótesis nula es $H_0: p=0.64$ y la hipótesis alternativa es $H_1: p> 0.64$. Utilizando el contraste para la proporción de una población, el estadístico de contraste es $z=1.78$ y el p-valor es $p = P(Z>1.78) = 0.0376$. Como el p-valor es menor que el nivel de significación $\alpha = 0.05$, se rechaza la hipótesis nula y se puede afirmar que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso.
 :::
 
 :::{#exr-contraste-media-consumo}
@@ -35,16 +60,42 @@ Se sabe que el consumo anual de helado correspondiente a cada español sigue una
 Realizar el contraste con un nivel de significación de 0.10.
 :::
 
-:::{#exr-contraste-varianza-telefonica}
-Telefónica ha constatado que el consumo de datos de los clientes que han contratado el paquete Fusión (fibra simétrica, TV, teléfono fijo y móvil. sigue una distribución normal cuya dispersión viene determinada por $\sigma$=3 Gb. Sin embargo, tras la incorporación de Netflix a la oferta de Movistar TV se ha observado que la dispersión habría podido cambiar, por lo que se ha llevado a cabo un muestreo con 15 clientes en el que la cuasidesviación típica es igual a 3.5 Gb.
+:::{.callout-tip collapse="true"}
+## Solución
+Sea $X\sim N(\mu,\sigma)$ la variable aleatoria que mide el consumo anual de helado correspondiente a cada español. La hipótesis nula es $H_0: \mu=20$ y la hipótesis alternativa es $H_1: \mu\neq 20$. Utilizando el contraste de la t de student, el estadístico de contraste es $t=-0.25$ y el p-valor es $p =2 P(t(21)<-0.25) = 0.8033$. Como el p-valor es mayor que el nivel de significación $\alpha = 0.1$, no se rechaza la hipótesis nula y se concluye que no hay pruebas evidentes en la muestra de que el consumo de helados este año vaya a ser diferente del año pasado.
+:::
 
-Determine si efectivamente la varianza en el consumo de datos de los clientes Fusión ha cambiado tras la incorporación de Netflix y especifique la región crítica óptima utilizando un nivel de significación del 2%.
+:::{#exr-contraste-varianza-telefonica}
+Telefónica ha constatado que el consumo de datos de los clientes que han contratado el paquete Fusión (fibra simétrica, TV, teléfono fijo y móvil. sigue una distribución normal cuya dispersión viene determinada por $\sigma$=$3$ Gb. Sin embargo, tras la incorporación de Netflix a la oferta de Movistar TV se ha observado que la dispersión habría podido cambiar, por lo que se ha llevado a cabo un muestreo con $15$ clientes en el que la cuasidesviación típica es igual a $3.5$ Gb.
+
+Determine si efectivamente la varianza en el consumo de datos de los clientes Fusión ha cambiado tras la incorporación de Netflix y especifique la región crítica óptima utilizando un nivel de significación del $2$%.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Sea $X\sim N(\mu,\sigma)$ la variable aleatoria que mide el consumo de datos de los clientes que han contratado el paquete Fusión. La hipótesis nula es $H_0: \sigma^2=9$ y la hipótesis alternativa es $H_1: \sigma^2\neq 9$. Utilizando el contraste de la $\chi^2$, el estadístico de contraste es $\chi^2=19.06$ y para un nivel de significación $\alpha = 0.02$, se obtienen las regiones críticas delimitadas por $\chi^2_{14}(0.01) = 5.629$ y $\chi^2_{14}(0.99) = 26.119$. Como el estadístico del contraste cae entre estos dos valores,  dentro de la región de aceptación, no se rechaza la hipótesis nula y se concluye que no hay pruebas evidentes en la muestra de que la varianza en el consumo de datos de los clientes Fusión haya cambiado tras la incorporación de Netflix.
 :::
 
 :::{#exr-contraste-media-peso}
-La OMS está preocupada por el incremento de la obesidad entre los niños de entre 11 y 14 años. La variable peso de los niños se distribuye según una normal. El equipo formula la hipótesis de que el peso medio de los niños de entre 11 y 14 años es de 46.5 kg. Seleccionada una muestra aleatoria de 40 niños, se obtiene que la media muestral es 49 kg y la cuasidesviación típica muestral  vale 7 kg.
+La OMS está preocupada por el incremento de la obesidad entre los niños de $12$ años. La variable peso de los niños se distribuye según una normal. El equipo formula la hipótesis de que el peso medio de los niños de $12$ años es de $46.5$ kg. Seleccionada una muestra aleatoria de $40$ niños, se obtiene que la media muestral es $49$ kg y la cuasidesviación típica muestral vale $7$ kg.
 
-Contrastar con un nivel de significación del 10% que el peso medio de los niños de entre 11 y 14 años sea 46.5 kg, frente a que sea mayor.
+a.  Realizar el contraste de hipótesis adecuado para ver si el peso medio de los niños de $12$ años es mayor de $46.5$ kg.
+
+a.  Si se pretende detectar al menos un incremento de $2$ kg en el peso medio de los niños de $12$ años, ¿qué potencia tiene el contraste?
+
+a.  ¿Qué tamaño muestral sería necesario para conseguir una potencia del al menos el $80$%?
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Sea $X\sim N(\mu,\sigma)$ la variable aleatoria que mide el peso de los niños de $12$ años.
+
+a.  La hipótesis nula es $H_0: \mu=46.5$ y la hipótesis alternativa es $H_1: \mu> 46.5$. Utilizando el contraste de la t de student, el estadístico de contraste es $t=2.26$ y el p-valor es $p = P(t(39)>2.26) = 0.0147$. Como el p-valor es menor que el nivel de significación $\alpha = 0.05$, se rechaza la hipótesis nula y se concluye que el peso medio de los niños de $12$ años es mayor de $46.5$ kg.
+
+b.  Cuando hay un incremento de al menos $2$ kg en el peso medio de los niños el estadístico del contraste es $t=1.81$, y la potencia del contraste es $1-P(t(39)<1.81) = 0.039$. Esta potencia es muy baja, lo cual indica que es poco probable que esta prueba detecte una diferencia de ese tamaño si realmente existe.
+
+c.  Para conseguir una potencia del al menos el $80$% se necesita un tamaño muestral de $n=76$ niños.
 :::
 
 :::{#exr-contraste-proporcion-consumo-producto}
@@ -52,9 +103,21 @@ Al lanzar un nuevo producto al mercado, el fabricante duda entre que sea adquiri
 
 a. ¿Se puede aceptar la hipótesis nula?
 
-b. Calcular el nivel de significación del contraste.
+b. Calcular nivel de significación del contraste.
 
 c. Obtener la potencia del contraste.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Sea $X\sim B(400,p)$ la variable aleatoria que mide el número de compradores del producto. 
+
+a.  La hipótesis nula es $H_0: p=0.2$ y la hipótesis alternativa es $H_1: p> 0.2$. Si se dedice fijar aceptar la hipótesis nula con una proporción muestral menor de $0.25$ entonces se aceptaría la hipótesis ya que la proporción muestral observada es $0.22$.
+
+b.  El nivel de significación del contraste es la máxima probabilidad de cometer un error de tipo I, es decir, de rechazar la hipótesis nula cuando es cierta, que en este caso es $P(\hat p>0.25|p=0.2) = 0.0062$.
+
+c.  La potencia del contraste es $1-P(\hat p<0.25|p=0.3) = 0.985$, por lo que se trata de un buen contraste para detectar al menos un incremento del $10$% en la proporción de compradores.
 :::
 
 :::{#exr-contraste-media-consumo-electrico}
@@ -65,16 +128,5 @@ a. ¿Con que hipótesis debería trabajar Holaluz en 2021 si se considera un niv
 b. ¿Cuál es la potencia del contraste?
 :::
 
-:::{#exr-contraste-proporcion-vacunados-covid}
-En la campaña de vacunación que recientemente ha comenzado en España para hacer frente a la pandemia provocada por la COVID, se ha estimado que un 24% de la población se negará a recibir la vacuna. No obstante, se cree que a medida que el proceso de vacunación avance, este porcentaje podría variar y reducirse al 19%, por lo que se ha decidido realizar un muestreo aleatorio entre la población española a los pocos días de comenzar la campaña de vacunación en el que se ha preguntado a 200 personas si se vacunarán cuando sean citados por las autoridades sanitarias, habiendo respondido 42 personas que no acudirán a vacunarse aduciendo diversas razones.
-
-a. Aplicando un nivel de significación del 2% ¿se podría afirmar que el porcentaje de personas que se niegan a vacunarse ha cambiado?
-
-b. ¿Cuál es la potencia del contraste?
-:::
-
-:::{#exr-contraste-varianza-principio-activo}
-Se sabe que el contenido de principio activo de los medicamentos producidos por una máquina sigue una distribución normal con varianza 0.2 mg/ml. Tras una revisión de mantenimiento y calibración de la máquina se cree que la variabilidad del contenido de principio activo ha disminuido 0.1 mg/ml. Para contrastarlo, se ha tomado una muestra de 10 medicamentos en los que se ha observado una varianza de 0.12 mg/ml. ¿Se puede aceptar la hipótesis de que la variabilidad ha disminuido 0.1 mg/ml?
-:::
 
 

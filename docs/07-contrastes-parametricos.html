@@ -234,20 +234,88 @@ window.Quarto = {
 
 
 <div id="exr-contraste-media-consumo-azucar" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.1</strong></span> Sabiendo que el año pasado el consumo per cápita de azúcar en España fue de 4.8 kg y que este consumo sigue una distribución normal, hemos seleccionado aleatoriamente a 20 españoles obteniendo una media muestral de 5 kg y una cuasidesviación típica muestral de 0.4 kg. Contrastar la hipótesis de que el consumo de azúcar per cápita de este año en España no ha variado utilizando un nivel de significación del 10% en cada uno de los casos siguientes.</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.1</strong></span> Sabiendo que el año pasado el consumo per cápita de azúcar en España fue de <span class="math inline">\(4.8\)</span> kg y que este consumo sigue una distribución normal, hemos seleccionado aleatoriamente a <span class="math inline">\(20\)</span> españoles obteniendo una media muestral de <span class="math inline">\(5\)</span> kg y una cuasidesviación típica muestral de <span class="math inline">\(0.4\)</span> kg. Contrastar la hipótesis de que el consumo de azúcar per cápita de este año en España no ha variado utilizando un nivel de significación del <span class="math inline">\(10\)</span>% en cada uno de los casos siguientes.</p>
 <ol type="a">
 <li><p>Suponiendo que la alternativa es que el consumo de azúcar per cápita sea distinto.</p></li>
 <li><p>Suponiendo que la alternativa es que el consumo de azúcar per cápita sea mayor.</p></li>
 </ol>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide el consumo per cápita de azúcar en España.</p>
+<ol type="a">
+<li><p>La hipótesis nula es <span class="math inline">\(H_0: \mu=4.8\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: \mu\neq 4.8\)</span>. Utilizando el contraste de la t de student, el estadístico de contraste es <span class="math inline">\(t=2.24\)</span> y el p-valor es <span class="math inline">\(p =2 P(t(19)&gt;2.24) = 0.037\)</span>. Como el p-valor es menor que el nivel de significación <span class="math inline">\(\alpha = 0.1\)</span>, se rechaza la hipótesis nula y se concluye que el consumo de azúcar per cápita de este año en España ha variado.</p></li>
+<li><p>En este caso, la hipótesis nula es <span class="math inline">\(H_0: \mu=4.8\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: \mu&gt; 4.8\)</span>. El estadístico del contraste es el mismo pero ahora el p-valor es <span class="math inline">\(p = P(t(19)&gt;2.24) = 0.0185\)</span>. Como el p-valor es menor que el nivel de significación <span class="math inline">\(\alpha = 0.1\)</span>, se rechaza la hipótesis nula y se concluye que el consumo de azúcar per cápita de este año en España ha aumentado.</p></li>
+</ol>
+</div>
+</div>
+</div>
 <div id="exr-contraste-proporcion-asistencia-clase" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.2</strong></span> En una clase de Estadística se ha comprobado que el 20% del alumnado falta a clase. Para disminuir esta preocupante cifra, los profesores han incorporado un sistema de evaluación continua que tendrá en cuenta las notas de clase de los alumnos en la nota final. Contraste con un nivel de significación del 5% que la incorporación de este método no es efectiva, es decir, el absentismo antes y después de la evaluación continua es el mismo, sabiendo que el porcentaje medio de no asistencia en 50 días tomados al azar ha sido del 17%.</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.2</strong></span> En una clase de Estadística se ha comprobado que el <span class="math inline">\(20\)</span>% del alumnado falta a clase. Para disminuir esta preocupante cifra, los profesores han incorporado un sistema de evaluación continua que tendrá en cuenta las notas de clase de los alumnos en la nota final. Contraste con un nivel de significación del <span class="math inline">\(5\)</span>% que la incorporación de este método no es efectiva, es decir, el absentismo antes y después de la evaluación continua es el mismo, sabiendo que el porcentaje medio de no asistencia en <span class="math inline">\(50\)</span> días tomados al azar ha sido del <span class="math inline">\(17\)</span>%.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim B(50,p)\)</span> la variable aleatoria que mide el número de días que falta un alumno a clase. La hipótesis nula es <span class="math inline">\(H_0: p=0.2\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: p\neq 0.2\)</span>. Utilizando el contraste para la proporción de una población, el estadístico de contraste es <span class="math inline">\(z=-1.5\)</span> y el p-valor es <span class="math inline">\(p =2 P(Z&lt;-0.53) = 0.298\)</span>. Como el p-valor es mayor que el nivel de significación <span class="math inline">\(\alpha = 0.05\)</span>, no se rechaza la hipótesis nula y se concluye que la incorporación de este método no es efectiva.</p>
+</div>
+</div>
 </div>
 <div id="exr-contraste-media-detergente" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.3</strong></span> Una empresa fabricante de detergente afirma que el contenido de cada paquete de detergente sigue una distribución normal de media 2150 g, pero una Asociación de Consumidores no está conforme con esta afirmación, por lo que realiza un estudio consistente en obtener una muestra aleatoria simple de 121 paquetes de detergente, obteniendo un contenido medio muestral de 2070 g y una cuasidesviación típica muestral de 130 grs. Contraste esta hipótesis con un nivel de significación del 5%.</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.3</strong></span> Una empresa fabricante de detergente afirma que el contenido de cada paquete de detergente sigue una distribución normal de media <span class="math inline">\(2150\)</span> g, pero una Asociación de Consumidores no está conforme con esta afirmación, por lo que realiza un estudio consistente en obtener una muestra aleatoria simple de <span class="math inline">\(121\)</span> paquetes de detergente, obteniendo un contenido medio muestral de <span class="math inline">\(2070\)</span> g y una cuasidesviación típica muestral de <span class="math inline">\(130\)</span> grs. Contraste esta hipótesis con un nivel de significación del <span class="math inline">\(5\)</span>%.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide el contenido de cada paquete de detergente. La hipótesis nula es <span class="math inline">\(H_0: \mu=2150\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: \mu\neq 2150\)</span>. Utilizando el contraste de la t de student, el estadístico de contraste es <span class="math inline">\(t=-6.77\)</span> y el p-valor es <span class="math inline">\(p =2 P(t(120)&lt;-6.77) = 0.00005\)</span>. Como el p-valor es menor que el nivel de significación <span class="math inline">\(\alpha = 0.05\)</span>, se rechaza la hipótesis nula y se concluye contenido promedio de los paquetes de detergente es significativamente diferente de los <span class="math inline">\(2150\)</span> g declarados por la empresa.</p>
+</div>
+</div>
 </div>
 <div id="exr-contraste-proporcion-aprobados" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.4</strong></span> El número de aprobados en una asignatura de un determinado curso ha sido del 64%. En uno de los grupos de ese curso se han presentado al examen 40 alumnos de los que 31 aprobaron. ¿Puede afirmarse con un nivel de significación del 5% que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso?</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.4</strong></span> El número de aprobados en una asignatura de un determinado curso ha sido del <span class="math inline">\(64\)</span>%. En uno de los grupos de ese curso se han presentado al examen <span class="math inline">\(40\)</span> alumnos de los que <span class="math inline">\(31\)</span> aprobaron. ¿Puede afirmarse con un nivel de significación del <span class="math inline">\(5\)</span>% que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim B(40,p)\)</span> la variable aleatoria que mide el número de aprobados en el grupo. La hipótesis nula es <span class="math inline">\(H_0: p=0.64\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: p&gt; 0.64\)</span>. Utilizando el contraste para la proporción de una población, el estadístico de contraste es <span class="math inline">\(z=1.78\)</span> y el p-valor es <span class="math inline">\(p = P(Z&gt;1.78) = 0.0376\)</span>. Como el p-valor es menor que el nivel de significación <span class="math inline">\(\alpha = 0.05\)</span>, se rechaza la hipótesis nula y se puede afirmar que los alumnos de dicho grupo han obtenido mejores calificaciones que el resto de los alumnos del curso.</p>
+</div>
+</div>
 </div>
 <div id="exr-contraste-media-consumo" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.5</strong></span> Se sabe que el consumo anual de helado correspondiente a cada español sigue una distribución normal y que el año pasado el consumo medio fue de 20 kg. Queremos contrastar si este año se va a mantener el consumo medio de helado que el año pasado, y para comprobarlo se efectúa una muestra aleatoria de 22 españoles, obteniéndose los siguientes resultados:</p>
@@ -256,21 +324,99 @@ window.Quarto = {
 </div>
 <p>Realizar el contraste con un nivel de significación de 0.10.</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide el consumo anual de helado correspondiente a cada español. La hipótesis nula es <span class="math inline">\(H_0: \mu=20\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: \mu\neq 20\)</span>. Utilizando el contraste de la t de student, el estadístico de contraste es <span class="math inline">\(t=-0.25\)</span> y el p-valor es <span class="math inline">\(p =2 P(t(21)&lt;-0.25) = 0.8033\)</span>. Como el p-valor es mayor que el nivel de significación <span class="math inline">\(\alpha = 0.1\)</span>, no se rechaza la hipótesis nula y se concluye que no hay pruebas evidentes en la muestra de que el consumo de helados este año vaya a ser diferente del año pasado.</p>
+</div>
+</div>
+</div>
 <div id="exr-contraste-varianza-telefonica" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.6</strong></span> Telefónica ha constatado que el consumo de datos de los clientes que han contratado el paquete Fusión (fibra simétrica, TV, teléfono fijo y móvil. sigue una distribución normal cuya dispersión viene determinada por <span class="math inline">\(\sigma\)</span>=3 Gb. Sin embargo, tras la incorporación de Netflix a la oferta de Movistar TV se ha observado que la dispersión habría podido cambiar, por lo que se ha llevado a cabo un muestreo con 15 clientes en el que la cuasidesviación típica es igual a 3.5 Gb.</p>
-<p>Determine si efectivamente la varianza en el consumo de datos de los clientes Fusión ha cambiado tras la incorporación de Netflix y especifique la región crítica óptima utilizando un nivel de significación del 2%.</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.6</strong></span> Telefónica ha constatado que el consumo de datos de los clientes que han contratado el paquete Fusión (fibra simétrica, TV, teléfono fijo y móvil. sigue una distribución normal cuya dispersión viene determinada por <span class="math inline">\(\sigma\)</span>=<span class="math inline">\(3\)</span> Gb. Sin embargo, tras la incorporación de Netflix a la oferta de Movistar TV se ha observado que la dispersión habría podido cambiar, por lo que se ha llevado a cabo un muestreo con <span class="math inline">\(15\)</span> clientes en el que la cuasidesviación típica es igual a <span class="math inline">\(3.5\)</span> Gb.</p>
+<p>Determine si efectivamente la varianza en el consumo de datos de los clientes Fusión ha cambiado tras la incorporación de Netflix y especifique la región crítica óptima utilizando un nivel de significación del <span class="math inline">\(2\)</span>%.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide el consumo de datos de los clientes que han contratado el paquete Fusión. La hipótesis nula es <span class="math inline">\(H_0: \sigma^2=9\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: \sigma^2\neq 9\)</span>. Utilizando el contraste de la <span class="math inline">\(\chi^2\)</span>, el estadístico de contraste es <span class="math inline">\(\chi^2=19.06\)</span> y para un nivel de significación <span class="math inline">\(\alpha = 0.02\)</span>, se obtienen las regiones críticas delimitadas por <span class="math inline">\(\chi^2_{14}(0.01) = 5.629\)</span> y <span class="math inline">\(\chi^2_{14}(0.99) = 26.119\)</span>. Como el estadístico del contraste cae entre estos dos valores, dentro de la región de aceptación, no se rechaza la hipótesis nula y se concluye que no hay pruebas evidentes en la muestra de que la varianza en el consumo de datos de los clientes Fusión haya cambiado tras la incorporación de Netflix.</p>
+</div>
+</div>
 </div>
 <div id="exr-contraste-media-peso" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.7</strong></span> La OMS está preocupada por el incremento de la obesidad entre los niños de entre 11 y 14 años. La variable peso de los niños se distribuye según una normal. El equipo formula la hipótesis de que el peso medio de los niños de entre 11 y 14 años es de 46.5 kg. Seleccionada una muestra aleatoria de 40 niños, se obtiene que la media muestral es 49 kg y la cuasidesviación típica muestral vale 7 kg.</p>
-<p>Contrastar con un nivel de significación del 10% que el peso medio de los niños de entre 11 y 14 años sea 46.5 kg, frente a que sea mayor.</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.7</strong></span> La OMS está preocupada por el incremento de la obesidad entre los niños de <span class="math inline">\(12\)</span> años. La variable peso de los niños se distribuye según una normal. El equipo formula la hipótesis de que el peso medio de los niños de <span class="math inline">\(12\)</span> años es de <span class="math inline">\(46.5\)</span> kg. Seleccionada una muestra aleatoria de <span class="math inline">\(40\)</span> niños, se obtiene que la media muestral es <span class="math inline">\(49\)</span> kg y la cuasidesviación típica muestral vale <span class="math inline">\(7\)</span> kg.</p>
+<ol type="a">
+<li><p>Realizar el contraste de hipótesis adecuado para ver si el peso medio de los niños de <span class="math inline">\(12\)</span> años es mayor de <span class="math inline">\(46.5\)</span> kg.</p></li>
+<li><p>Si se pretende detectar al menos un incremento de <span class="math inline">\(2\)</span> kg en el peso medio de los niños de <span class="math inline">\(12\)</span> años, ¿qué potencia tiene el contraste?</p></li>
+<li><p>¿Qué tamaño muestral sería necesario para conseguir una potencia del al menos el <span class="math inline">\(80\)</span>%?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable aleatoria que mide el peso de los niños de <span class="math inline">\(12\)</span> años.</p>
+<ol type="a">
+<li><p>La hipótesis nula es <span class="math inline">\(H_0: \mu=46.5\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: \mu&gt; 46.5\)</span>. Utilizando el contraste de la t de student, el estadístico de contraste es <span class="math inline">\(t=2.26\)</span> y el p-valor es <span class="math inline">\(p = P(t(39)&gt;2.26) = 0.0147\)</span>. Como el p-valor es menor que el nivel de significación <span class="math inline">\(\alpha = 0.05\)</span>, se rechaza la hipótesis nula y se concluye que el peso medio de los niños de <span class="math inline">\(12\)</span> años es mayor de <span class="math inline">\(46.5\)</span> kg.</p></li>
+<li><p>Cuando hay un incremento de al menos <span class="math inline">\(2\)</span> kg en el peso medio de los niños el estadístico del contraste es <span class="math inline">\(t=1.81\)</span>, y la potencia del contraste es <span class="math inline">\(1-P(t(39)&lt;1.81) = 0.039\)</span>. Esta potencia es muy baja, lo cual indica que es poco probable que esta prueba detecte una diferencia de ese tamaño si realmente existe.</p></li>
+<li><p>Para conseguir una potencia del al menos el <span class="math inline">\(80\)</span>% se necesita un tamaño muestral de <span class="math inline">\(n=76\)</span> niños.</p></li>
+</ol>
+</div>
+</div>
 </div>
 <div id="exr-contraste-proporcion-consumo-producto" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.8</strong></span> Al lanzar un nuevo producto al mercado, el fabricante duda entre que sea adquirido por el 20% de la población o que sea adquirido por el 30%. Seleccionada al azar una muestra de 400 posibles compradores del producto se obtiene que la demandaría el 22%. La regla de decisión que utilizaremos es aceptar la hipótesis nula si adquieren el producto menos del 25% de los consultados.</p>
 <ol type="a">
 <li><p>¿Se puede aceptar la hipótesis nula?</p></li>
-<li><p>Calcular el nivel de significación del contraste.</p></li>
+<li><p>Calcular nivel de significación del contraste.</p></li>
 <li><p>Obtener la potencia del contraste.</p></li>
 </ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X\sim B(400,p)\)</span> la variable aleatoria que mide el número de compradores del producto.</p>
+<ol type="a">
+<li><p>La hipótesis nula es <span class="math inline">\(H_0: p=0.2\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: p&gt; 0.2\)</span>. Si se dedice fijar aceptar la hipótesis nula con una proporción muestral menor de <span class="math inline">\(0.25\)</span> entonces se aceptaría la hipótesis ya que la proporción muestral observada es <span class="math inline">\(0.22\)</span>.</p></li>
+<li><p>El nivel de significación del contraste es la máxima probabilidad de cometer un error de tipo I, es decir, de rechazar la hipótesis nula cuando es cierta, que en este caso es <span class="math inline">\(P(\hat p&gt;0.25|p=0.2) = 0.0062\)</span>.</p></li>
+<li><p>La potencia del contraste es <span class="math inline">\(1-P(\hat p&lt;0.25|p=0.3) = 0.985\)</span>, por lo que se trata de un buen contraste para detectar al menos un incremento del <span class="math inline">\(10\)</span>% en la proporción de compradores.</p></li>
+</ol>
+</div>
+</div>
 </div>
 <div id="exr-contraste-media-consumo-electrico" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.9</strong></span> Según los datos publicados por REE (Red Eléctrica Española. el consumo medio diario de electricidad en los hogares españoles es de 9,55 watios/hora. La compañía comercializadora de electricidad Holaluz sabe que el citado consumo sigue una distribución normal, pero debe determinar cuál será el consumo medio en el que basará su estrategia de cara a 2021, ya que el aumento del teletrabajo podría provocar que el referido consumo medio varíe en el nuevo ejercicio y se incremente a 12,50 watios/hora, por lo que ha llevado a cabo un muestra aleatoria con 25 clientes en el que la media muestral ha resultado ser igual a un consumo de 12,17 watios/hora mientras que la cuasivarianza es igual a 9.</p>
@@ -278,16 +424,6 @@ window.Quarto = {
 <li><p>¿Con que hipótesis debería trabajar Holaluz en 2021 si se considera un nivel de significación del 1%?</p></li>
 <li><p>¿Cuál es la potencia del contraste?</p></li>
 </ol>
-</div>
-<div id="exr-contraste-proporcion-vacunados-covid" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.10</strong></span> En la campaña de vacunación que recientemente ha comenzado en España para hacer frente a la pandemia provocada por la COVID, se ha estimado que un 24% de la población se negará a recibir la vacuna. No obstante, se cree que a medida que el proceso de vacunación avance, este porcentaje podría variar y reducirse al 19%, por lo que se ha decidido realizar un muestreo aleatorio entre la población española a los pocos días de comenzar la campaña de vacunación en el que se ha preguntado a 200 personas si se vacunarán cuando sean citados por las autoridades sanitarias, habiendo respondido 42 personas que no acudirán a vacunarse aduciendo diversas razones.</p>
-<ol type="a">
-<li><p>Aplicando un nivel de significación del 2% ¿se podría afirmar que el porcentaje de personas que se niegan a vacunarse ha cambiado?</p></li>
-<li><p>¿Cuál es la potencia del contraste?</p></li>
-</ol>
-</div>
-<div id="exr-contraste-varianza-principio-activo" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.11</strong></span> Se sabe que el contenido de principio activo de los medicamentos producidos por una máquina sigue una distribución normal con varianza 0.2 mg/ml. Tras una revisión de mantenimiento y calibración de la máquina se cree que la variabilidad del contenido de principio activo ha disminuido 0.1 mg/ml. Para contrastarlo, se ha tomado una muestra de 10 medicamentos en los que se ha observado una varianza de 0.12 mg/ml. ¿Se puede aceptar la hipótesis de que la variabilidad ha disminuido 0.1 mg/ml?</p>
 </div>
 
 
