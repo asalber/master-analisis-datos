@@ -419,9 +419,9 @@ Solución
 </div>
 </div>
 <div id="exr-contraste-media-consumo-electrico" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.9</strong></span> Según los datos publicados por REE (Red Eléctrica Española. el consumo medio diario de electricidad en los hogares españoles es de 9,55 watios/hora. La compañía comercializadora de electricidad Holaluz sabe que el citado consumo sigue una distribución normal, pero debe determinar cuál será el consumo medio en el que basará su estrategia de cara a 2021, ya que el aumento del teletrabajo podría provocar que el referido consumo medio varíe en el nuevo ejercicio y se incremente a 12,50 watios/hora, por lo que ha llevado a cabo un muestra aleatoria con 25 clientes en el que la media muestral ha resultado ser igual a un consumo de 12,17 watios/hora mientras que la cuasivarianza es igual a 9.</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.9</strong></span> Según los datos publicados por REE (Red Eléctrica Española. el consumo medio diario de electricidad en los hogares españoles es de <span class="math inline">\(9.5\)</span> watios/hora. La compañía comercializadora de electricidad Holaluz sabe que el citado consumo sigue una distribución normal, pero debe determinar cuál será el consumo medio en el que basará su estrategia de cara a 2021, ya que el aumento del teletrabajo podría provocar que el referido consumo medio varíe en el nuevo ejercicio y se incremente a <span class="math inline">\(11\)</span> watios/hora, por lo que ha llevado a cabo un muestra aleatoria con <span class="math inline">\(50\)</span> clientes en el que la media muestral ha resultado ser igual a un consumo de <span class="math inline">\(10.57\)</span> watios/hora mientras que la cuasivarianza es igual a <span class="math inline">\(9\)</span>.</p>
 <ol type="a">
-<li><p>¿Con que hipótesis debería trabajar Holaluz en 2021 si se considera un nivel de significación del 1%?</p></li>
+<li><p>¿Con que hipótesis debería trabajar Holaluz en 2021 si se considera un nivel de significación del <span class="math inline">\(1\)</span>%?</p></li>
 <li><p>¿Cuál es la potencia del contraste?</p></li>
 </ol>
 </div>
@@ -437,7 +437,14 @@ Solución
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<ol type="a">
+<li>Sea <span class="math inline">\(X\sim N(\mu,\sigma)\)</span> la variable que mide el consumo diario de electricidad de los hogares españoles.</li>
+</ol>
+<p>La hipótesis nula es <span class="math inline">\(H_0: \mu=9.5\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: \mu&gt; 9.5\)</span>.</p>
+<p>Utilizando el contraste de la t de student, el estadístico de contraste es <span class="math inline">\(t=2.522\)</span> y el p-valor es <span class="math inline">\(p = P(t(49)&gt;2.522) = 0.0075\)</span>. Como el p-valor es menor que el nivel de significación <span class="math inline">\(\alpha = 0.01\)</span>, se rechaza la hipótesis nula y se concluye que el consumo medio de electricidad en los hogares españoles en 2021 será mayor de <span class="math inline">\(9.5\)</span> watios/hora.</p>
+<ol type="a">
+<li>Suponiendo que la media del consumo es <span class="math inline">\(11\)</span>, el estadístico del contraste es <span class="math inline">\(t = 3.536\)</span> y la potencia del contraste suponiendo que el consumo medio es <span class="math inline">\(11\)</span> watios/hora, es <span class="math inline">\(0.965\)</span>.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -471,7 +478,7 @@ Solución
 </div>
 </div>
 <div id="exr-contraste-proporcion-consumo-alcohol" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.14</strong></span> En un estudio sobre el consumo de alcohol entre los jóvenes durante los fines de semana, se preguntó a 100 chicos y a 125 chicas, de los que 63 chicos y 59 chicas contestaron que consumían. En vista de estos datos, ¿existe alguna diferencia significativa entre las proporciones de chicos y chicas que consumen alcohol los fines de semana?</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.15</strong></span> En un estudio sobre el consumo de alcohol entre los jóvenes durante los fines de semana, se preguntó a 100 chicos y a 125 chicas, de los que 63 chicos y 59 chicas contestaron que consumían. En vista de estos datos, ¿existe alguna diferencia significativa entre las proporciones de chicos y chicas que consumen alcohol los fines de semana?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -635,6 +642,26 @@ Solución
 <div class="callout-body-container callout-body">
 <p>Sea <span class="math inline">\(X\)</span> la variable aleatoria que mide la diferencia entre el número de fármacos vendidos en una farmacia en un mes después y antes de la campaña de publicidad.</p>
 <p>Planteamos las hipótesis <span class="math inline">\(H_0: \mu = 0\)</span> y <span class="math inline">\(H_1: \mu&gt;0\)</span>. Utilizando el contraste de la t de student para la una media poblacional, el estadístico del contraste es <span class="math inline">\(t=1.965\)</span> y el p-valor es <span class="math inline">\(p = P(t(7)&gt;1.965) = 0.045\)</span>. Como el p-valor es menor que el nivel de significación <span class="math inline">\(\alpha = 0.05\)</span>, se rechaza la hipótesis nula y se concluye que hay pruebas significativas de que la campaña de publicidad ha aumentado las ventas.</p>
+</div>
+</div>
+</div>
+<div id="exr-contraste-proporciones-voto" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.14</strong></span> En una encuesta sobre la intención de voto un partido político, se han tomado dos muestra de <span class="math inline">\(1000\)</span> personas en dos ciudades <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>. En la ciudad <span class="math inline">\(A\)</span> se han obtenido <span class="math inline">\(350\)</span> votos a favor del partido y en la ciudad <span class="math inline">\(B\)</span> se han obtenido <span class="math inline">\(390\)</span> votos a favor del partido. ¿Existen diferencias significativas entre las proporciones de votos a favor del partido en las dos ciudades?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(X_A\sim B(1000,p_A)\)</span> la variable aleatoria que mide el número de votos a favor del partido en la ciudad <span class="math inline">\(A\)</span> y <span class="math inline">\(X_B\sim B(1000,p_B)\)</span> la variable aleatoria que mide el número de votos a favor del partido en la ciudad <span class="math inline">\(B\)</span>.</p>
+<p>La hipótesis nula es <span class="math inline">\(H_0: p_A=p_B\)</span> y la hipótesis alternativa es <span class="math inline">\(H_1: p_A\neq p_B\)</span>. Utilizando el contraste para la comparación de dos poblaciones, se tiene que el estadístico de contraste es <span class="math inline">\(z=-1.853\)</span> y el p-valor es <span class="math inline">\(p =2 P(Z&lt;-1.853) = 0.0639\)</span>. Como el p-valor es mayor que el nivel de significación <span class="math inline">\(\alpha = 0.05\)</span>, no se rechaza la hipótesis nula y se concluye que no hay diferencias significativas entre las proporciones de votos a favor del partido en las dos ciudades.</p>
 </div>
 </div>
 </div>
